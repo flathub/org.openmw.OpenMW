@@ -247,6 +247,7 @@
           {
             "type": "shell",
             "commands": [
+              "sed -i 's:>org.openmw.desktop<:>org.openmw.OpenMW.desktop<:' files/openmw.appdata.xml",
               "sed -i s:Icon=openmw:Icon=org.openmw.OpenMW.png: files/openmw.desktop",
               "sed -i s:Icon=openmw-cs:Icon=org.openmw.OpenMW.OpenCS.png: files/openmw-cs.desktop"
             ]
