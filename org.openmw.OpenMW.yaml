@@ -1,7 +1,7 @@
 ---
 app-id: org.openmw.OpenMW
 runtime: org.freedesktop.Platform
-runtime-version: "1.6"
+runtime-version: '18.08'
 sdk: org.freedesktop.Sdk
 command: openmw-launcher
 rename-appdata-file: openmw.appdata.xml
@@ -116,7 +116,7 @@ modules:
       - "examples"
     build-options:
       env:
-        CXXFLAGS: "-std=gnu++98"
+        CXXFLAGS: "-std=gnu++11 -fpermissive"
         LD_LIBRARY_PATH: "/run/build/qt4/lib/"
     sources:
       - type: archive
