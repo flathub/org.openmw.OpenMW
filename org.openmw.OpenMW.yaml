@@ -194,8 +194,8 @@ modules:
     buildsystem: simple
     build-commands:
       - "./bootstrap.sh --prefix=/app --with-libraries=system,filesystem,program_options"
-      - "./b2 headers"
-      - "./b2 install"
+      - "./b2 headers -j $FLATPAK_BUILDER_N_JOBS"
+      - "./b2 install -j $FLATPAK_BUILDER_N_JOBS"
     sources:
       - type: archive
         url: https://downloads.sourceforge.net/project/boost/boost/1.64.0/boost_1_64_0.tar.bz2
