@@ -1,7 +1,7 @@
 ---
 app-id: org.openmw.OpenMW
 runtime: org.freedesktop.Platform
-runtime-version: '1.6'
+runtime-version: "1.6"
 sdk: org.freedesktop.Sdk
 command: openmw-launcher
 rename-appdata-file: openmw.appdata.xml
