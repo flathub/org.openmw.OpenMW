@@ -152,7 +152,7 @@ modules:
         sha256: 12c4e2e4f96791751359379365d525717456f3ae435cf1c714b19ebe7775cf06
 
   - name: bullet
-    # Ninja builds don't successfully install all required files
+    # The cmake + ninja buildsystem doesn't install the required binaries correctly
     buildsystem: cmake
     config-opts:
       - "-DBUILD_BULLET2_DEMOS=0"
