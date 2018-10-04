@@ -109,11 +109,11 @@ modules:
       - "-no-webkit"
       - "-no-xmlpatterns"
       - "-nomake"
-      - demos
+      - "demos"
       - "-nomake"
-      - docs
+      - "docs"
       - "-nomake"
-      - examples
+      - "examples"
     build-options:
       env:
         CXXFLAGS: "-std=gnu++98"
@@ -127,11 +127,11 @@ modules:
       - "/lib/*.prl"
       - "/lib/qt4/mkspecs"
       - "/lib/qt4/q3porting.xml"
-      - libQtCLucene*
-      - libQtDesigner*
-      - libQtHelp*
-      - libQtSql*
-      - libQtXml*
+      - "libQtCLucene*"
+      - "libQtDesigner*"
+      - "libQtHelp*"
+      - "libQtSql*"
+      - "libQtXml*"
 
   - name: openscenegraph
     buildsystem: cmake-ninja
@@ -190,6 +190,7 @@ modules:
       - type: archive
         url: https://github.com/twogood/unshield/archive/1.4.2.tar.gz
         sha256: 5dd4ea0c7e97ad8e3677ff3a254b116df08a5d041c2df8859aad5c4f88d1f774
+
   - name: boost
     buildsystem: simple
     build-commands:
@@ -216,10 +217,10 @@ modules:
         tag: openmw-0.44.0
       - type: shell
         commands:
-          - sed -i 's:>org.openmw.desktop<:>org.openmw.OpenMW.desktop<:' files/openmw.appdata.xml
-          - 'sed -i s:Icon=openmw:Icon=org.openmw.OpenMW.png: files/openmw.desktop'
-          - 'sed -i s:Icon=openmw-cs:Icon=org.openmw.OpenMW.OpenCS.png: files/openmw-cs.desktop'
+          - "sed -i 's:>org.openmw.desktop<:>org.openmw.OpenMW.desktop<:' files/openmw.appdata.xml"
+          - "sed -i 's:Icon=openmw:Icon=org.openmw.OpenMW.png:' files/openmw.desktop"
+          - "sed -i 's:Icon=openmw-cs:Icon=org.openmw.OpenMW.OpenCS.png:' files/openmw-cs.desktop"
     post-install:
-      - mv /app/share/applications/openmw-cs.desktop /app/share/applications/org.openmw.OpenMW.OpenCS.desktop
-      - mv /app/share/icons/openmw.png /app/share/icons/org.openmw.OpenMW.png
-      - mv /app/share/icons/openmw-cs.png /app/share/icons/org.openmw.OpenMW.OpenCS.png
+      - "mv /app/share/applications/openmw-cs.desktop /app/share/applications/org.openmw.OpenMW.OpenCS.desktop"
+      - "mv /app/share/icons/openmw.png /app/share/icons/org.openmw.OpenMW.png"
+      - "mv /app/share/icons/openmw-cs.png /app/share/icons/org.openmw.OpenMW.OpenCS.png"
