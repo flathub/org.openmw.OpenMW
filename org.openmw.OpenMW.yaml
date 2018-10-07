@@ -151,8 +151,8 @@ modules:
       - "-DCMAKE_BUILD_TYPE=Release"
     sources:
       - type: archive
-        url: https://github.com/OpenMW/osg/archive/ecedf3232c2f1b3b6a2f06f77ea37a9afb6a93f5.zip
-        sha256: 6d4901835c05215bb94f73e8afcc37c835f87e7e040c610c88373a66958407aa
+        url: https://github.com/OpenMW/osg/archive/b6ec7bb7a4cd06ae95bda087d48c0fb7d5ca0abf.zip
+        sha256: 12c4e2e4f96791751359379365d525717456f3ae435cf1c714b19ebe7775cf06
 
   - name: bullet
     # The cmake + ninja buildsystem doesn't install the required binaries correctly
