@@ -124,16 +124,13 @@ modules:
         sha256: e2882295097e47fe089f8ac741a95fef47e0a73a3f3cdf21b56990638f626ea0
       - type: patch
         path: fix-qt4-no-sslv3.patch
-      - type: file
+      - type: patch
         path: fix-qt4-openssl-11.patch
       - type: shell
         commands:
           - 'sed -e "s|-O2|${CXXFLAGS}|" -i mkspecs/common/{g++,gcc}-base.conf'
           - 'sed -e "/^QMAKE_LFLAGS_RPATH/s| -Wl,-rpath,||g" -i mkspecs/common/gcc-base-unix.conf'
           - 'sed -e "/QMAKE_LFLAGS\\s/s|+=|+= ${LDFLAGS}|g" -i mkspecs/common/gcc-base.conf'
-          - 'echo -e "#include<openssl/opensslv.h>\nint main(){return OPENSSL_VERSION_NUMBER>=0x010100000L?0:1;}" >has_openssl_1_1.c'
-          - 'gcc ${CFLAGS} has_openssl_1_1.c -o has_openssl_1_1'
-          - 'if ./has_openssl_1_1; then patch -p1 -i fix-qt4-openssl-11.patch; fi'
     cleanup:
       - "/bin"
       - "/lib/*.prl"
