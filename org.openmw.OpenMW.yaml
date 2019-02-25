@@ -9,7 +9,7 @@ rename-desktop-file: openmw.desktop
 finish-args:
   - "--share=ipc"
   - "--socket=x11"
-  - "--device=dri"
+  - "--device=all"
   - "--filesystem=host"
   - "--socket=pulseaudio"
 build-options:
