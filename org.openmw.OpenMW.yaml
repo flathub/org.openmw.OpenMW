@@ -223,7 +223,7 @@ modules:
     sources:
       - type: git
         url: https://github.com/OpenMW/openmw.git
-        tag: openmw-0.44.0
+        tag: openmw-0.45.0
       - type: shell
         commands:
           - "sed -i 's:>org.openmw.desktop<:>org.openmw.OpenMW.desktop<:' files/openmw.appdata.xml"
