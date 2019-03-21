@@ -1,7 +1,7 @@
 ---
 app-id: org.openmw.OpenMW
 runtime: org.freedesktop.Platform
-runtime-version: "1.6"
+runtime-version: '18.08'
 sdk: org.freedesktop.Sdk
 command: openmw-launcher
 rename-appdata-file: openmw.appdata.xml
@@ -45,8 +45,8 @@ modules:
       - "--enable-demuxer=bink,mp3,ogg,pcm_s16le,wav"
     sources:
       - type: archive
-        url: http://ffmpeg.org/releases/ffmpeg-3.3.5.tar.xz
-        sha256: a893490c3a8a7caaa9c47373b789c0335d0ac3572f2ba61059de842b9e45d802
+        url: http://ffmpeg.org/releases/ffmpeg-4.0.2.tar.xz
+        sha256: a95c0cc9eb990e94031d2183f2e6e444cc61c99f6f182d1575c433d62afb2f97
 
   - name: qt4
     config-opts:
@@ -116,12 +116,21 @@ modules:
       - "examples"
     build-options:
       env:
-        CXXFLAGS: "-std=gnu++98"
+        CXXFLAGS: "-std=gnu++98 -O2"
         LD_LIBRARY_PATH: "/run/build/qt4/lib/"
     sources:
       - type: archive
         url: https://download.qt.io/archive/qt/4.8/4.8.7/qt-everywhere-opensource-src-4.8.7.tar.gz
         sha256: e2882295097e47fe089f8ac741a95fef47e0a73a3f3cdf21b56990638f626ea0
+      - type: patch
+        path: fix-qt4-no-sslv3.patch
+      - type: patch
+        path: fix-qt4-openssl-11.patch
+      - type: shell
+        commands:
+          - 'sed -e "s|-O2|${CXXFLAGS}|" -i mkspecs/common/{g++,gcc}-base.conf'
+          - 'sed -e "/^QMAKE_LFLAGS_RPATH/s| -Wl,-rpath,||g" -i mkspecs/common/gcc-base-unix.conf'
+          - 'sed -e "/QMAKE_LFLAGS\\s/s|+=|+= ${LDFLAGS}|g" -i mkspecs/common/gcc-base.conf'
     cleanup:
       - "/bin"
       - "/lib/*.prl"
@@ -166,8 +175,8 @@ modules:
       - "-DUSE_GRAPHICAL_BENCHMARK=0"
     sources:
       - type: archive
-        url: https://github.com/bulletphysics/bullet3/archive/2.86.1.tar.gz
-        sha256: c058b2e4321ba6adaa656976c1a138c07b18fc03b29f5b82880d5d8228fbf059
+        url: https://github.com/bulletphysics/bullet3/archive/2.87.tar.gz
+        sha256: 438c151c48840fe3f902ec260d9496f8beb26dba4b17769a4a53212903935f95
 
   - name: mygui
     buildsystem: cmake-ninja
@@ -199,8 +208,8 @@ modules:
       - "./b2 install -j $FLATPAK_BUILDER_N_JOBS"
     sources:
       - type: archive
-        url: https://downloads.sourceforge.net/project/boost/boost/1.64.0/boost_1_64_0.tar.bz2
-        sha256: 7bcc5caace97baa948931d712ea5f37038dbb1c5d89b43ad4def4ed7cb683332
+        url: https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.gz
+        sha256: da3411ea45622579d419bfda66f45cd0f8c32a181d84adfa936f5688388995cf
 
   - name: openmw
     builddir: true
