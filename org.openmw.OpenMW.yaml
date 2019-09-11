@@ -1,8 +1,8 @@
 ---
 app-id: org.openmw.OpenMW
-runtime: org.freedesktop.Platform
-runtime-version: '18.08'
-sdk: org.freedesktop.Sdk
+runtime: org.kde.Platform
+runtime-version: '5.12'
+sdk: org.kde.Sdk
 command: openmw-launcher
 rename-appdata-file: openmw.appdata.xml
 rename-desktop-file: openmw.desktop
@@ -48,100 +48,6 @@ modules:
         url: http://ffmpeg.org/releases/ffmpeg-4.2.1.tar.xz
         sha256: cec7c87e9b60d174509e263ac4011b522385fd0775292e1670ecc1180c9bb6d4
 
-  - name: qt4
-    config-opts:
-      - "-verbose"
-      - "-confirm-license"
-      - "-opensource"
-      - "-release"
-      - "-shared"
-      - "-no-static"
-      - "-fast"
-      - "-datadir"
-      - "/app/lib/qt4"
-      - "-importdir"
-      - "/app/lib/qt4/imports"
-      - "-plugindir"
-      - "/app/lib/qt4/plugins"
-      - "-translationdir"
-      - "/app/share/qt4/translations"
-      - "-accessibility"
-      - "-exceptions"
-      - "-fontconfig"
-      - "-glib"
-      - "-dbus-linked"
-      - "-openssl-linked"
-      - "-optimized-qmake"
-      - "-system-libjpeg"
-      - "-system-libpng"
-      - "-system-libtiff"
-      - "-system-proxies"
-      - "-system-zlib"
-      - "-no-audio-backend"
-      - "-no-cups"
-      - "-no-declarative"
-      - "-no-declarative-debug"
-      - "-no-gtkstyle"
-      - "-no-javascript-jit"
-      - "-no-libmng"
-      - "-no-multimedia"
-      - "-no-nis"
-      - "-no-openvg"
-      - "-no-phonon"
-      - "-no-phonon-backend"
-      - "-no-qdbus"
-      - "-no-qt3support"
-      - "-no-rpath"
-      - "-no-script"
-      - "-no-scripttools"
-      - "-no-sql-db2"
-      - "-no-sql-ibase"
-      - "-no-sql-mysql"
-      - "-no-sql-oci"
-      - "-no-sql-odbc"
-      - "-no-sql-psql"
-      - "-no-sql-sqlite"
-      - "-no-sql-sqlite2"
-      - "-no-sql-sqlite_symbian"
-      - "-no-sql-symsql"
-      - "-no-sql-tds"
-      - "-no-svg"
-      - "-no-webkit"
-      - "-no-xmlpatterns"
-      - "-nomake"
-      - "demos"
-      - "-nomake"
-      - "docs"
-      - "-nomake"
-      - "examples"
-    build-options:
-      env:
-        CXXFLAGS: "-std=gnu++98 -O2"
-        LD_LIBRARY_PATH: "/run/build/qt4/lib/"
-    sources:
-      - type: archive
-        url: https://download.qt.io/archive/qt/4.8/4.8.7/qt-everywhere-opensource-src-4.8.7.tar.gz
-        sha256: e2882295097e47fe089f8ac741a95fef47e0a73a3f3cdf21b56990638f626ea0
-      - type: patch
-        path: fix-qt4-no-sslv3.patch
-      - type: patch
-        path: fix-qt4-openssl-11.patch
-      - type: shell
-        commands:
-          - 'sed -e "s|-O2|${CXXFLAGS}|" -i mkspecs/common/{g++,gcc}-base.conf'
-          - 'sed -e "/^QMAKE_LFLAGS_RPATH/s| -Wl,-rpath,||g" -i mkspecs/common/gcc-base-unix.conf'
-          - 'sed -e "/QMAKE_LFLAGS\\s/s|+=|+= ${LDFLAGS}|g" -i mkspecs/common/gcc-base.conf'
-    cleanup:
-      - "/bin"
-      - "/lib/*.prl"
-      - "/lib/qt4/mkspecs"
-      - "/lib/qt4/q3porting.xml"
-      - "libQtCLucene*"
-      - "libQtDesigner*"
-      - "libQtHelp*"
-      - "libQtSql*"
-      - "libQtXml*"
-
   - name: openscenegraph
     buildsystem: cmake-ninja
     config-opts:
@@ -154,6 +60,7 @@ modules:
       - "-DBUILD_OSG_PLUGIN_PNG=1"
       - "-DBUILD_OSG_DEPRECATED_SERIALIZERS=0"
       - "-DBUILD_OSG_APPLICATIONS=0"
+      - "-DDESIRED_QT_VERSION=5"
       - "-DCMAKE_BUILD_TYPE=Release"
     sources:
       - type: archive
@@ -218,6 +125,7 @@ modules:
       - "-DBUILD_BSATOOL=no"
       - "-DBUILD_ESMTOOL=no"
       - "-DBUILD_MYGUI_PLUGIN=no"
+      - "-DDESIRED_QT_VERSION=5"
       - "-DCMAKE_BUILD_TYPE=Release"
       - "-DICONDIR=/app/share/icons"
     sources:
