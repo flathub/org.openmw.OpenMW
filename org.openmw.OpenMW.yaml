@@ -45,8 +45,8 @@ modules:
       - "--enable-demuxer=bink,mp3,ogg,pcm_s16le,wav"
     sources:
       - type: archive
-        url: http://ffmpeg.org/releases/ffmpeg-4.0.2.tar.xz
-        sha256: a95c0cc9eb990e94031d2183f2e6e444cc61c99f6f182d1575c433d62afb2f97
+        url: http://ffmpeg.org/releases/ffmpeg-4.2.1.tar.xz
+        sha256: cec7c87e9b60d174509e263ac4011b522385fd0775292e1670ecc1180c9bb6d4
 
   - name: qt4
     config-opts:
@@ -157,8 +157,8 @@ modules:
       - "-DCMAKE_BUILD_TYPE=Release"
     sources:
       - type: archive
-        url: https://github.com/OpenMW/osg/archive/b6ec7bb7a4cd06ae95bda087d48c0fb7d5ca0abf.zip
-        sha256: 12c4e2e4f96791751359379365d525717456f3ae435cf1c714b19ebe7775cf06
+        url: https://github.com/OpenMW/osg/archive/2b4c8e37268e595b82da4b9aadd5507852569b87.zip
+        sha256: cffee367ee98f6a6953206893772ab99ef90cbfbda5e2ea3e2e135c22659eb01
 
   - name: bullet
     # The cmake + ninja buildsystem doesn't install the required binaries correctly
@@ -175,8 +175,8 @@ modules:
       - "-DUSE_GRAPHICAL_BENCHMARK=0"
     sources:
       - type: archive
-        url: https://github.com/bulletphysics/bullet3/archive/2.87.tar.gz
-        sha256: 438c151c48840fe3f902ec260d9496f8beb26dba4b17769a4a53212903935f95
+        url: https://github.com/bulletphysics/bullet3/archive/2.88.tar.gz
+        sha256: 21c135775527754fc2929db1db5144e92ad0218ae72840a9f162acb467a7bbf9
 
   - name: mygui
     buildsystem: cmake-ninja
@@ -197,8 +197,8 @@ modules:
       - "-DCMAKE_BUILD_TYPE=Release"
     sources:
       - type: archive
-        url: https://github.com/twogood/unshield/archive/1.4.2.tar.gz
-        sha256: 5dd4ea0c7e97ad8e3677ff3a254b116df08a5d041c2df8859aad5c4f88d1f774
+        url: https://github.com/twogood/unshield/archive/1.4.3.tar.gz
+        sha256: aa8c978dc0eb1158d266eaddcd1852d6d71620ddfc82807fe4bf2e19022b7bab
 
   - name: boost
     buildsystem: simple
@@ -208,8 +208,8 @@ modules:
       - "./b2 install -j $FLATPAK_BUILDER_N_JOBS"
     sources:
       - type: archive
-        url: https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.gz
-        sha256: da3411ea45622579d419bfda66f45cd0f8c32a181d84adfa936f5688388995cf
+        url: https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.gz
+        sha256: 96b34f7468f26a141f6020efb813f1a2f3dfb9797ecf76a7d7cbd843cc95f5bd
 
   - name: openmw
     builddir: true
