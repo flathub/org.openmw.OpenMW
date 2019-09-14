@@ -132,6 +132,9 @@ modules:
       - type: git
         url: https://github.com/OpenMW/openmw.git
         tag: openmw-0.45.0
+      - type: file
+        path: org.openmw.OpenMW.appdata.xml
+        dest-filename: files/openmw.appdata.xml
       - type: shell
         commands:
           - "sed -i 's:>org.openmw.desktop<:>org.openmw.OpenMW.desktop<:' files/openmw.appdata.xml"
