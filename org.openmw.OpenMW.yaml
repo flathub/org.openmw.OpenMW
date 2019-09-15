@@ -1,8 +1,8 @@
 ---
 app-id: org.openmw.OpenMW
-runtime: org.freedesktop.Platform
-runtime-version: '18.08'
-sdk: org.freedesktop.Sdk
+runtime: org.kde.Platform
+runtime-version: '5.12'
+sdk: org.kde.Sdk
 command: openmw-launcher
 rename-appdata-file: openmw.appdata.xml
 rename-desktop-file: openmw.desktop
@@ -45,102 +45,8 @@ modules:
       - "--enable-demuxer=bink,mp3,ogg,pcm_s16le,wav"
     sources:
       - type: archive
-        url: http://ffmpeg.org/releases/ffmpeg-4.0.2.tar.xz
-        sha256: a95c0cc9eb990e94031d2183f2e6e444cc61c99f6f182d1575c433d62afb2f97
-
-  - name: qt4
-    config-opts:
-      - "-verbose"
-      - "-confirm-license"
-      - "-opensource"
-      - "-release"
-      - "-shared"
-      - "-no-static"
-      - "-fast"
-      - "-datadir"
-      - "/app/lib/qt4"
-      - "-importdir"
-      - "/app/lib/qt4/imports"
-      - "-plugindir"
-      - "/app/lib/qt4/plugins"
-      - "-translationdir"
-      - "/app/share/qt4/translations"
-      - "-accessibility"
-      - "-exceptions"
-      - "-fontconfig"
-      - "-glib"
-      - "-dbus-linked"
-      - "-openssl-linked"
-      - "-optimized-qmake"
-      - "-system-libjpeg"
-      - "-system-libpng"
-      - "-system-libtiff"
-      - "-system-proxies"
-      - "-system-zlib"
-      - "-no-audio-backend"
-      - "-no-cups"
-      - "-no-declarative"
-      - "-no-declarative-debug"
-      - "-no-gtkstyle"
-      - "-no-javascript-jit"
-      - "-no-libmng"
-      - "-no-multimedia"
-      - "-no-nis"
-      - "-no-openvg"
-      - "-no-phonon"
-      - "-no-phonon-backend"
-      - "-no-qdbus"
-      - "-no-qt3support"
-      - "-no-rpath"
-      - "-no-script"
-      - "-no-scripttools"
-      - "-no-sql-db2"
-      - "-no-sql-ibase"
-      - "-no-sql-mysql"
-      - "-no-sql-oci"
-      - "-no-sql-odbc"
-      - "-no-sql-psql"
-      - "-no-sql-sqlite"
-      - "-no-sql-sqlite2"
-      - "-no-sql-sqlite_symbian"
-      - "-no-sql-symsql"
-      - "-no-sql-tds"
-      - "-no-svg"
-      - "-no-webkit"
-      - "-no-xmlpatterns"
-      - "-nomake"
-      - "demos"
-      - "-nomake"
-      - "docs"
-      - "-nomake"
-      - "examples"
-    build-options:
-      env:
-        CXXFLAGS: "-std=gnu++98 -O2"
-        LD_LIBRARY_PATH: "/run/build/qt4/lib/"
-    sources:
-      - type: archive
-        url: https://download.qt.io/archive/qt/4.8/4.8.7/qt-everywhere-opensource-src-4.8.7.tar.gz
-        sha256: e2882295097e47fe089f8ac741a95fef47e0a73a3f3cdf21b56990638f626ea0
-      - type: patch
-        path: fix-qt4-no-sslv3.patch
-      - type: patch
-        path: fix-qt4-openssl-11.patch
-      - type: shell
-        commands:
-          - 'sed -e "s|-O2|${CXXFLAGS}|" -i mkspecs/common/{g++,gcc}-base.conf'
-          - 'sed -e "/^QMAKE_LFLAGS_RPATH/s| -Wl,-rpath,||g" -i mkspecs/common/gcc-base-unix.conf'
-          - 'sed -e "/QMAKE_LFLAGS\\s/s|+=|+= ${LDFLAGS}|g" -i mkspecs/common/gcc-base.conf'
-    cleanup:
-      - "/bin"
-      - "/lib/*.prl"
-      - "/lib/qt4/mkspecs"
-      - "/lib/qt4/q3porting.xml"
-      - "libQtCLucene*"
-      - "libQtDesigner*"
-      - "libQtHelp*"
-      - "libQtSql*"
-      - "libQtXml*"
+        url: http://ffmpeg.org/releases/ffmpeg-4.2.1.tar.xz
+        sha256: cec7c87e9b60d174509e263ac4011b522385fd0775292e1670ecc1180c9bb6d4
 
   - name: openscenegraph
     buildsystem: cmake-ninja
@@ -154,11 +60,12 @@ modules:
       - "-DBUILD_OSG_PLUGIN_PNG=1"
       - "-DBUILD_OSG_DEPRECATED_SERIALIZERS=0"
       - "-DBUILD_OSG_APPLICATIONS=0"
+      - "-DDESIRED_QT_VERSION=5"
       - "-DCMAKE_BUILD_TYPE=Release"
     sources:
       - type: archive
-        url: https://github.com/OpenMW/osg/archive/b6ec7bb7a4cd06ae95bda087d48c0fb7d5ca0abf.zip
-        sha256: 12c4e2e4f96791751359379365d525717456f3ae435cf1c714b19ebe7775cf06
+        url: https://github.com/OpenMW/osg/archive/2b4c8e37268e595b82da4b9aadd5507852569b87.zip
+        sha256: cffee367ee98f6a6953206893772ab99ef90cbfbda5e2ea3e2e135c22659eb01
 
   - name: bullet
     # The cmake + ninja buildsystem doesn't install the required binaries correctly
@@ -175,8 +82,8 @@ modules:
       - "-DUSE_GRAPHICAL_BENCHMARK=0"
     sources:
       - type: archive
-        url: https://github.com/bulletphysics/bullet3/archive/2.87.tar.gz
-        sha256: 438c151c48840fe3f902ec260d9496f8beb26dba4b17769a4a53212903935f95
+        url: https://github.com/bulletphysics/bullet3/archive/2.88.tar.gz
+        sha256: 21c135775527754fc2929db1db5144e92ad0218ae72840a9f162acb467a7bbf9
 
   - name: mygui
     buildsystem: cmake-ninja
@@ -197,8 +104,8 @@ modules:
       - "-DCMAKE_BUILD_TYPE=Release"
     sources:
       - type: archive
-        url: https://github.com/twogood/unshield/archive/1.4.2.tar.gz
-        sha256: 5dd4ea0c7e97ad8e3677ff3a254b116df08a5d041c2df8859aad5c4f88d1f774
+        url: https://github.com/twogood/unshield/archive/1.4.3.tar.gz
+        sha256: aa8c978dc0eb1158d266eaddcd1852d6d71620ddfc82807fe4bf2e19022b7bab
 
   - name: boost
     buildsystem: simple
@@ -208,8 +115,8 @@ modules:
       - "./b2 install -j $FLATPAK_BUILDER_N_JOBS"
     sources:
       - type: archive
-        url: https://dl.bintray.com/boostorg/release/1.68.0/source/boost_1_68_0.tar.gz
-        sha256: da3411ea45622579d419bfda66f45cd0f8c32a181d84adfa936f5688388995cf
+        url: https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.gz
+        sha256: 96b34f7468f26a141f6020efb813f1a2f3dfb9797ecf76a7d7cbd843cc95f5bd
 
   - name: openmw
     builddir: true
@@ -218,12 +125,16 @@ modules:
       - "-DBUILD_BSATOOL=no"
       - "-DBUILD_ESMTOOL=no"
       - "-DBUILD_MYGUI_PLUGIN=no"
+      - "-DDESIRED_QT_VERSION=5"
       - "-DCMAKE_BUILD_TYPE=Release"
       - "-DICONDIR=/app/share/icons"
     sources:
       - type: git
         url: https://github.com/OpenMW/openmw.git
         tag: openmw-0.45.0
+      - type: file
+        path: org.openmw.OpenMW.appdata.xml
+        dest-filename: files/openmw.appdata.xml
       - type: shell
         commands:
           - "sed -i 's:>org.openmw.desktop<:>org.openmw.OpenMW.desktop<:' files/openmw.appdata.xml"
