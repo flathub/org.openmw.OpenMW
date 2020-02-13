@@ -1,7 +1,7 @@
 ---
 app-id: org.openmw.OpenMW
 runtime: org.kde.Platform
-runtime-version: '5.12'
+runtime-version: '5.14'
 sdk: org.kde.Sdk
 command: openmw-launcher
 rename-appdata-file: openmw.appdata.xml
@@ -45,8 +45,8 @@ modules:
       - "--enable-demuxer=bink,mp3,ogg,pcm_s16le,wav"
     sources:
       - type: archive
-        url: http://ffmpeg.org/releases/ffmpeg-4.2.1.tar.xz
-        sha256: cec7c87e9b60d174509e263ac4011b522385fd0775292e1670ecc1180c9bb6d4
+        url: http://ffmpeg.org/releases/ffmpeg-4.2.2.tar.xz
+        sha256: cb754255ab0ee2ea5f66f8850e1bd6ad5cac1cd855d0a2f4990fb8c668b0d29c
 
   - name: openscenegraph
     buildsystem: cmake-ninja
@@ -64,8 +64,8 @@ modules:
       - "-DCMAKE_BUILD_TYPE=Release"
     sources:
       - type: archive
-        url: https://github.com/OpenMW/osg/archive/2b4c8e37268e595b82da4b9aadd5507852569b87.zip
-        sha256: cffee367ee98f6a6953206893772ab99ef90cbfbda5e2ea3e2e135c22659eb01
+        url: https://github.com/openscenegraph/OpenSceneGraph/archive/OpenSceneGraph-3.6.5.tar.gz
+        sha256: aea196550f02974d6d09291c5d83b51ca6a03b3767e234a8c0e21322927d1e12
 
   - name: bullet
     # The cmake + ninja buildsystem doesn't install the required binaries correctly
@@ -82,8 +82,8 @@ modules:
       - "-DUSE_GRAPHICAL_BENCHMARK=0"
     sources:
       - type: archive
-        url: https://github.com/bulletphysics/bullet3/archive/2.88.tar.gz
-        sha256: 21c135775527754fc2929db1db5144e92ad0218ae72840a9f162acb467a7bbf9
+        url: https://github.com/bulletphysics/bullet3/archive/2.89.tar.gz
+        sha256: 621b36e91c0371933f3c2156db22c083383164881d2a6b84636759dc4cbb0bb8
 
   - name: mygui
     buildsystem: cmake-ninja
@@ -95,8 +95,8 @@ modules:
       - "-DMYGUI_BUILD_PLUGINS=0"
     sources:
       - type: archive
-        url: https://github.com/MyGUI/mygui/archive/MyGUI3.2.2.tar.gz
-        sha256: 0a28d7ec8a47993cb68deb48b36331e28f12dd92580b709eaef21d599b67a78f
+        url: https://github.com/MyGUI/mygui/archive/MyGUI3.4.0.tar.gz
+        sha256: d1d5f294670ae71f7200ed4b30859018281d8cfd45d6a38d18b97a4aba604c42
 
   - name: libunshield
     buildsystem: cmake-ninja
@@ -110,13 +110,13 @@ modules:
   - name: boost
     buildsystem: simple
     build-commands:
-      - "./bootstrap.sh --prefix=/app --with-libraries=system,filesystem,program_options"
+      - "./bootstrap.sh --prefix=/app --with-libraries=filesystem,iostreams,program_options,system"
       - "./b2 headers -j $FLATPAK_BUILDER_N_JOBS"
       - "./b2 install -j $FLATPAK_BUILDER_N_JOBS"
     sources:
       - type: archive
-        url: https://dl.bintray.com/boostorg/release/1.71.0/source/boost_1_71_0.tar.gz
-        sha256: 96b34f7468f26a141f6020efb813f1a2f3dfb9797ecf76a7d7cbd843cc95f5bd
+        url: https://dl.bintray.com/boostorg/release/1.72.0/source/boost_1_72_0.tar.gz
+        sha256: c66e88d5786f2ca4dbebb14e06b566fb642a1a6947ad8cc9091f9f445134143f
 
   - name: openmw
     builddir: true
@@ -130,11 +130,10 @@ modules:
       - "-DICONDIR=/app/share/icons"
     sources:
       - type: git
-        url: https://github.com/OpenMW/openmw.git
-        tag: openmw-0.45.0
-      - type: file
-        path: org.openmw.OpenMW.appdata.xml
-        dest-filename: files/openmw.appdata.xml
+        url: https://gitlab.com/ananace/openmw.git
+        branch: fix-sky
+        # url: https://gitlab.com/OpenMW/openmw.git
+        # branch: master
       - type: shell
         commands:
           - "sed -i 's:>org.openmw.desktop<:>org.openmw.OpenMW.desktop<:' files/openmw.appdata.xml"
