@@ -130,10 +130,8 @@ modules:
       - "-DICONDIR=/app/share/icons"
     sources:
       - type: git
-        url: https://gitlab.com/ananace/openmw.git
-        branch: fix-sky
-        # url: https://gitlab.com/OpenMW/openmw.git
-        # branch: master
+        url: https://gitlab.com/OpenMW/openmw.git
+        branch: master
       - type: shell
         commands:
           - "sed -i 's:>org.openmw.desktop<:>org.openmw.OpenMW.desktop<:' files/openmw.appdata.xml"
