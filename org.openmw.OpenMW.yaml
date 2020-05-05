@@ -5,7 +5,7 @@ runtime-version: '5.14'
 sdk: org.kde.Sdk
 command: openmw-launcher
 rename-appdata-file: openmw.appdata.xml
-rename-desktop-file: openmw.desktop
+rename-desktop-file: org.openmw.launcher.desktop
 finish-args:
   - "--share=ipc"
   - "--socket=x11"
@@ -66,6 +66,12 @@ modules:
       - type: archive
         url: https://github.com/openscenegraph/OpenSceneGraph/archive/OpenSceneGraph-3.6.5.tar.gz
         sha256: aea196550f02974d6d09291c5d83b51ca6a03b3767e234a8c0e21322927d1e12
+      - type: patch
+        path: osg-tga-fix-1.patch
+      - type: patch
+        path: osg-tga-fix-2.patch
+      - type: patch
+        path: osg-prevent_immutability.patch
 
   - name: bullet
     # The cmake + ninja buildsystem doesn't install the required binaries correctly
@@ -134,10 +140,10 @@ modules:
         branch: master
       - type: shell
         commands:
-          - "sed -i 's:>org.openmw.desktop<:>org.openmw.OpenMW.desktop<:' files/openmw.appdata.xml"
-          - "sed -i 's:Icon=openmw:Icon=org.openmw.OpenMW.png:' files/openmw.desktop"
-          - "sed -i 's:Icon=openmw-cs:Icon=org.openmw.OpenMW.OpenCS.png:' files/openmw-cs.desktop"
+          - "sed -i 's:>org.openmw.launcher.desktop<:>org.openmw.OpenMW.desktop<:' files/openmw.appdata.xml"
+          - "sed -i 's:Icon=openmw:Icon=org.openmw.OpenMW.png:' files/org.openmw.launcher.desktop"
+          - "sed -i 's:Icon=openmw-cs:Icon=org.openmw.OpenMW.OpenCS.png:' files/org.openmw.cs.desktop"
     post-install:
-      - "mv /app/share/applications/openmw-cs.desktop /app/share/applications/org.openmw.OpenMW.OpenCS.desktop"
+      - "mv /app/share/applications/org.openmw.cs.desktop /app/share/applications/org.openmw.OpenMW.OpenCS.desktop"
       - "mv /app/share/icons/openmw.png /app/share/icons/org.openmw.OpenMW.png"
       - "mv /app/share/icons/openmw-cs.png /app/share/icons/org.openmw.OpenMW.OpenCS.png"
