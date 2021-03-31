@@ -137,6 +137,18 @@ modules:
         url: https://github.com/lz4/lz4/archive/refs/tags/v1.9.3.tar.gz
         sha256: 030644df4611007ff7dc962d981f390361e6c97a34e5cbc393ddfbe019ffe2c1
 
+  - name: recastnavigation
+    buildsystem: cmake-ninja
+    config-opts:
+      - "-DCMAKE_BUILD_TYPE=Release"
+      - "-DRECASTNAVIGATION_DEMO=no"
+      - "-DRECASTNAVIGATION_TESTS=no"
+      - "-DRECASTNAVIGATION_EXAMPLES=no"
+    sources:
+      - type: archive
+        url: https://github.com/recastnavigation/recastnavigation/archive/e75adf86f91eb3082220085e42dda62679f9a3ea.zip
+        sha256: d3339aaea1d81307bcac2bece176c5359ed5f8c8f9721fc360d28f82f9119253
+
   - name: openmw
     builddir: true
     buildsystem: cmake-ninja
@@ -147,6 +159,7 @@ modules:
       - "-DDESIRED_QT_VERSION=5"
       - "-DCMAKE_BUILD_TYPE=Release"
       - "-DICONDIR=/app/share/icons"
+      - "-DOPENMW_USE_SYSTEM_RECASTNAVIGATION=yes"
     sources:
       - type: git
         url: https://gitlab.com/OpenMW/openmw.git
