@@ -89,10 +89,12 @@ modules:
       - "-DCMAKE_BUILD_TYPE=Release"
       - "-DUSE_GLUT=0"
       - "-DUSE_GRAPHICAL_BENCHMARK=0"
+      - "-DUSE_DOUBLE_PRECISION=on"
+      - "-DBULLET2_MULTITHREADING=on"
     sources:
       - type: archive
-        url: https://github.com/bulletphysics/bullet3/archive/2.89.tar.gz
-        sha256: 621b36e91c0371933f3c2156db22c083383164881d2a6b84636759dc4cbb0bb8
+        url: https://github.com/bulletphysics/bullet3/archive/87e668f6b2a883b4ef63db8a07c8e9283916e9d9.zip
+        sha256: 2016b5c1b3cf77c9a647a4f302a89505b4f5c6306aa8db745d0712296d78175f
 
   - name: mygui
     buildsystem: cmake-ninja
