@@ -106,8 +106,8 @@ modules:
       - "-DMYGUI_BUILD_PLUGINS=0"
     sources:
       - type: archive
-        url: https://github.com/MyGUI/mygui/archive/MyGUI3.4.0.tar.gz
-        sha256: d1d5f294670ae71f7200ed4b30859018281d8cfd45d6a38d18b97a4aba604c42
+        url: https://github.com/MyGUI/mygui/archive/59c1388b942721887d18743ada15f1906ff11a1f.zip
+        sha256: 586132d55a8694bab332ffa8560c1da6819cf6468251750740ec18d5d295ec2b
 
   - name: libunshield
     buildsystem: cmake-ninja
