@@ -89,10 +89,12 @@ modules:
       - "-DCMAKE_BUILD_TYPE=Release"
       - "-DUSE_GLUT=0"
       - "-DUSE_GRAPHICAL_BENCHMARK=0"
+      - "-DUSE_DOUBLE_PRECISION=on"
+      - "-DBULLET2_MULTITHREADING=on"
     sources:
       - type: archive
-        url: https://github.com/bulletphysics/bullet3/archive/2.89.tar.gz
-        sha256: 621b36e91c0371933f3c2156db22c083383164881d2a6b84636759dc4cbb0bb8
+        url: https://github.com/bulletphysics/bullet3/archive/87e668f6b2a883b4ef63db8a07c8e9283916e9d9.zip
+        sha256: 2016b5c1b3cf77c9a647a4f302a89505b4f5c6306aa8db745d0712296d78175f
 
   - name: mygui
     buildsystem: cmake-ninja
@@ -104,8 +106,8 @@ modules:
       - "-DMYGUI_BUILD_PLUGINS=0"
     sources:
       - type: archive
-        url: https://github.com/MyGUI/mygui/archive/MyGUI3.4.0.tar.gz
-        sha256: d1d5f294670ae71f7200ed4b30859018281d8cfd45d6a38d18b97a4aba604c42
+        url: https://github.com/MyGUI/mygui/archive/59c1388b942721887d18743ada15f1906ff11a1f.zip
+        sha256: 586132d55a8694bab332ffa8560c1da6819cf6468251750740ec18d5d295ec2b
 
   - name: libunshield
     buildsystem: cmake-ninja
@@ -127,6 +129,28 @@ modules:
         url: https://dl.bintray.com/boostorg/release/1.72.0/source/boost_1_72_0.tar.gz
         sha256: c66e88d5786f2ca4dbebb14e06b566fb642a1a6947ad8cc9091f9f445134143f
 
+  - name: lz4
+    buildsystem: simple
+    build-commands:
+      - "make lib"
+      - "PREFIX=/app make install"
+    sources:
+      - type: archive
+        url: https://github.com/lz4/lz4/archive/refs/tags/v1.9.3.tar.gz
+        sha256: 030644df4611007ff7dc962d981f390361e6c97a34e5cbc393ddfbe019ffe2c1
+
+  - name: recastnavigation
+    buildsystem: cmake-ninja
+    config-opts:
+      - "-DCMAKE_BUILD_TYPE=Release"
+      - "-DRECASTNAVIGATION_DEMO=no"
+      - "-DRECASTNAVIGATION_TESTS=no"
+      - "-DRECASTNAVIGATION_EXAMPLES=no"
+    sources:
+      - type: archive
+        url: https://github.com/recastnavigation/recastnavigation/archive/e75adf86f91eb3082220085e42dda62679f9a3ea.zip
+        sha256: d3339aaea1d81307bcac2bece176c5359ed5f8c8f9721fc360d28f82f9119253
+
   - name: openmw
     builddir: true
     buildsystem: cmake-ninja
@@ -137,6 +161,7 @@ modules:
       - "-DDESIRED_QT_VERSION=5"
       - "-DCMAKE_BUILD_TYPE=Release"
       - "-DICONDIR=/app/share/icons"
+      - "-DOPENMW_USE_SYSTEM_RECASTNAVIGATION=yes"
     sources:
       - type: git
         url: https://gitlab.com/OpenMW/openmw.git
