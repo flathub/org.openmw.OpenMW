@@ -1,7 +1,7 @@
 ---
 app-id: org.openmw.OpenMW
 runtime: org.kde.Platform
-runtime-version: '5.14'
+runtime-version: '5.15'
 sdk: org.kde.Sdk
 command: openmw-launcher
 rename-appdata-file: openmw.appdata.xml
@@ -46,8 +46,8 @@ modules:
       - "--enable-demuxer=bink,mp3,ogg,pcm_s16le,wav"
     sources:
       - type: archive
-        url: http://ffmpeg.org/releases/ffmpeg-4.2.2.tar.xz
-        sha256: cb754255ab0ee2ea5f66f8850e1bd6ad5cac1cd855d0a2f4990fb8c668b0d29c
+        url: http://ffmpeg.org/releases/ffmpeg-4.3.2.tar.xz
+        sha256: 46e4e64f1dd0233cbc0934b9f1c0da676008cad34725113fb7f802cfa84ccddb
     cleanup:
       - "/share/ffmpeg"
 
@@ -63,18 +63,11 @@ modules:
       - "-DBUILD_OSG_PLUGIN_PNG=1"
       - "-DBUILD_OSG_DEPRECATED_SERIALIZERS=0"
       - "-DBUILD_OSG_APPLICATIONS=0"
-      - "-DDESIRED_QT_VERSION=5"
       - "-DCMAKE_BUILD_TYPE=Release"
     sources:
       - type: archive
-        url: https://github.com/openscenegraph/OpenSceneGraph/archive/OpenSceneGraph-3.6.5.tar.gz
-        sha256: aea196550f02974d6d09291c5d83b51ca6a03b3767e234a8c0e21322927d1e12
-      - type: patch
-        path: osg-tga-fix-1.patch
-      - type: patch
-        path: osg-tga-fix-2.patch
-      - type: patch
-        path: osg-prevent_immutability.patch
+        url: https://github.com/openmw/osg/archive/e2090e5e75ec6605262abceaf10cb925b9a987c1.zip
+        sha256: 0f1704a439a1f5ac272511b8eccdddcb17c0830071987abff5a04f10e05a9ad9
 
   - name: bullet
     # The cmake + ninja buildsystem doesn't install the required binaries correctly
@@ -93,8 +86,8 @@ modules:
       - "-DBULLET2_MULTITHREADING=on"
     sources:
       - type: archive
-        url: https://github.com/bulletphysics/bullet3/archive/87e668f6b2a883b4ef63db8a07c8e9283916e9d9.zip
-        sha256: 2016b5c1b3cf77c9a647a4f302a89505b4f5c6306aa8db745d0712296d78175f
+        url: https://github.com/bulletphysics/bullet3/archive/93be7e644024e92df13b454a4a0b0fcd02b21b10.zip
+        sha256: 82968fbf20a92c51bc71ac9ee8f6381ecf3420c7cbb881ffb7bb633fa13b27f9
 
   - name: mygui
     buildsystem: cmake-ninja
@@ -106,8 +99,8 @@ modules:
       - "-DMYGUI_BUILD_PLUGINS=0"
     sources:
       - type: archive
-        url: https://github.com/MyGUI/mygui/archive/59c1388b942721887d18743ada15f1906ff11a1f.zip
-        sha256: 586132d55a8694bab332ffa8560c1da6819cf6468251750740ec18d5d295ec2b
+        url: https://github.com/MyGUI/mygui/archive/b48248803f28d68d04939d41f3bff1ca184584cb.zip
+        sha256: 4d6cf8831e0aac9439d39696128317b865046c1756fb136cb35b546c63e07a7d
 
   - name: libunshield
     buildsystem: cmake-ninja
@@ -121,13 +114,13 @@ modules:
   - name: boost
     buildsystem: simple
     build-commands:
-      - "./bootstrap.sh --prefix=/app --with-libraries=filesystem,iostreams,program_options,system"
-      - "./b2 headers -j $FLATPAK_BUILDER_N_JOBS"
-      - "./b2 install -j $FLATPAK_BUILDER_N_JOBS"
+      - ./bootstrap.sh --prefix=/app --with-libraries=filesystem,iostreams,program_options,system
+      - ./b2 headers
+      - ./b2 install
     sources:
       - type: archive
-        url: https://dl.bintray.com/boostorg/release/1.72.0/source/boost_1_72_0.tar.gz
-        sha256: c66e88d5786f2ca4dbebb14e06b566fb642a1a6947ad8cc9091f9f445134143f
+        url: https://dl.bintray.com/boostorg/release/1.75.0/source/boost_1_75_0.tar.gz
+        sha256: aeb26f80e80945e82ee93e5939baebdca47b9dee80a07d3144be1e1a6a66dd6a
 
   - name: lz4
     buildsystem: simple
@@ -148,8 +141,8 @@ modules:
       - "-DRECASTNAVIGATION_EXAMPLES=no"
     sources:
       - type: archive
-        url: https://github.com/recastnavigation/recastnavigation/archive/e75adf86f91eb3082220085e42dda62679f9a3ea.zip
-        sha256: d3339aaea1d81307bcac2bece176c5359ed5f8c8f9721fc360d28f82f9119253
+        url: https://github.com/recastnavigation/recastnavigation/archive/c5cbd53024c8a9d8d097a4371215e3342d2fdc87.zip
+        sha256: 53dacfd7bead4d3b0c9a04a648caed3e7c3900e0aba765c15dee26b50f6103c6
 
   - name: openmw
     builddir: true
