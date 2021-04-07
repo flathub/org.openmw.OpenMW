@@ -32,7 +32,6 @@ cleanup:
 modules:
   - name: ffmpeg
     config-opts:
-      - "--disable-everything"
       - "--disable-static"
       - "--enable-shared"
       - "--disable-programs"
@@ -41,9 +40,17 @@ modules:
       - "--disable-avfilter"
       - "--disable-postproc"
 
-      # Enough to run the base game, might need extending for mod content
-      - "--enable-decoder=bink,binkaudio_rdft,mp3,pcm_s16le,vorbis"
-      - "--enable-demuxer=bink,mp3,ogg,pcm_s16le,wav"
+#     - "--disable-everything"
+      - "--disable-encoders"
+      - "--disable-muxers"
+      - "--disable-protocols"
+      - "--disable-indevs"
+      - "--disable-devices"
+      - "--disable-filters"
+
+#     # Enough to run the base game, might need extending for mod content
+#     - "--enable-decoder=bink,binkaudio_rdft,mp3,pcm_s16le,vorbis"
+#     - "--enable-demuxer=bink,mp3,ogg,pcm_s16le,wav"
     sources:
       - type: archive
         url: http://ffmpeg.org/releases/ffmpeg-4.3.2.tar.xz
