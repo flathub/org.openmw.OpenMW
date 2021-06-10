@@ -73,8 +73,8 @@ modules:
       - "-DCMAKE_BUILD_TYPE=Release"
     sources:
       - type: archive
-        url: https://github.com/openmw/osg/archive/e2090e5e75ec6605262abceaf10cb925b9a987c1.zip
-        sha256: 0f1704a439a1f5ac272511b8eccdddcb17c0830071987abff5a04f10e05a9ad9
+        url: https://github.com/openmw/osg/archive/76e061739610bc9a3420a59e7c9395e742ce2f97.zip
+        sha256: fa1100362eae260192819d65d90b29ec0b88fdf80e30cee677730b7a0d68637e
 
   - name: bullet
     # The cmake + ninja buildsystem doesn't install the required binaries correctly
@@ -106,8 +106,8 @@ modules:
       - "-DMYGUI_BUILD_PLUGINS=0"
     sources:
       - type: archive
-        url: https://github.com/MyGUI/mygui/archive/b48248803f28d68d04939d41f3bff1ca184584cb.zip
-        sha256: 4d6cf8831e0aac9439d39696128317b865046c1756fb136cb35b546c63e07a7d
+        url: https://github.com/MyGUI/mygui/archive/refs/tags/MyGUI3.4.1.tar.gz
+        sha256: bdf730bdeb4ad89e6b8223967db01aa5274d2b93adc2c0d6aa4842faeed4de1a
 
   - name: libunshield
     buildsystem: cmake-ninja
@@ -165,7 +165,7 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/OpenMW/openmw.git
-        branch: master
+        branch: openmw-47
       - type: shell
         commands:
           - "sed -i 's:>org.openmw.launcher.desktop<:>org.openmw.OpenMW.desktop<:' files/openmw.appdata.xml"
