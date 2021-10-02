@@ -48,8 +48,8 @@ modules:
       - "-DOPT_COLLADA15=0"
     sources:
       - type: archive
-        url: http://downloads.sourceforge.net/collada-dom/collada-dom-2.4.0.tgz
-        sha256: 5ca2d12f744bdceff0066ed3067b3b23d6859581fb0d657f98ba4487d8fa3896
+        url: https://github.com/rdiankov/collada-dom/archive/c1e20b7d6ff806237030fe82f126cb86d661f063.zip
+        sha256: 6c51cd068c7d6760b587391884942caaac8a515d138535041e42d00d3e5c9152
 
   - name: ffmpeg
     config-opts:
@@ -61,17 +61,12 @@ modules:
       - "--disable-avfilter"
       - "--disable-postproc"
 
-#     - "--disable-everything"
       - "--disable-encoders"
       - "--disable-muxers"
       - "--disable-protocols"
       - "--disable-indevs"
       - "--disable-devices"
       - "--disable-filters"
-
-#     # Enough to run the base game, might need extending for mod content
-#     - "--enable-decoder=bink,binkaudio_rdft,mp3,pcm_s16le,vorbis"
-#     - "--enable-demuxer=bink,mp3,ogg,pcm_s16le,wav"
     sources:
       - type: archive
         url: http://ffmpeg.org/releases/ffmpeg-4.3.2.tar.xz
@@ -167,8 +162,6 @@ modules:
     config-opts:
       - "-DBUILD_BSATOOL=no"
       - "-DBUILD_ESMTOOL=no"
-      - "-DBUILD_MYGUI_PLUGIN=no"
-      - "-DDESIRED_QT_VERSION=5"
       - "-DCMAKE_BUILD_TYPE=Release"
       - "-DICONDIR=/app/share/icons"
       - "-DOPENMW_USE_SYSTEM_RECASTNAVIGATION=yes"
