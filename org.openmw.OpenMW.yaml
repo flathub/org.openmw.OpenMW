@@ -30,6 +30,27 @@ cleanup:
   - "*.a"
 
 modules:
+  - name: boost
+    buildsystem: simple
+    build-commands:
+      - ./bootstrap.sh --prefix=/app --with-libraries=filesystem,iostreams,program_options,system
+      - ./b2 headers
+      - ./b2 install
+    sources:
+      - type: archive
+        url: https://boostorg.jfrog.io/artifactory/main/release/1.75.0/source/boost_1_75_0.tar.gz
+        sha256: aeb26f80e80945e82ee93e5939baebdca47b9dee80a07d3144be1e1a6a66dd6a
+
+  - name: collada-dom
+    buildsystem: cmake-ninja
+    config-opts:
+      - "-DOPT_COLLADA14=1"
+      - "-DOPT_COLLADA15=0"
+    sources:
+      - type: archive
+        url: http://downloads.sourceforge.net/collada-dom/collada-dom-2.4.0.tgz
+        sha256: 5ca2d12f744bdceff0066ed3067b3b23d6859581fb0d657f98ba4487d8fa3896
+
   - name: ffmpeg
     config-opts:
       - "--disable-static"
@@ -118,17 +139,6 @@ modules:
         url: https://github.com/twogood/unshield/archive/1.4.3.tar.gz
         sha256: aa8c978dc0eb1158d266eaddcd1852d6d71620ddfc82807fe4bf2e19022b7bab
 
-  - name: boost
-    buildsystem: simple
-    build-commands:
-      - ./bootstrap.sh --prefix=/app --with-libraries=filesystem,iostreams,program_options,system
-      - ./b2 headers
-      - ./b2 install
-    sources:
-      - type: archive
-        url: https://boostorg.jfrog.io/artifactory/main/release/1.75.0/source/boost_1_75_0.tar.gz
-        sha256: aeb26f80e80945e82ee93e5939baebdca47b9dee80a07d3144be1e1a6a66dd6a
-
   - name: lz4
     buildsystem: simple
     build-commands:
@@ -165,7 +175,7 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/OpenMW/openmw.git
-        branch: openmw-47
+        # branch: openmw-47
         commit: 74aa7cdd487dcc9cbd5e4b8e0bebec06654075bb
       - type: shell
         commands:
