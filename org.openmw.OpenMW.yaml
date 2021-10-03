@@ -171,7 +171,6 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/OpenMW/openmw.git
-        # branch: openmw-47
         commit: b81df8af9c42da9ead15791ce020ac085bbad494
       - type: file
         path: openmw.appdata.xml
