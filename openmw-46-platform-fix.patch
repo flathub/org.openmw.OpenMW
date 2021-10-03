@@ -1,0 +1,41 @@
+--- a/components/sceneutil/mwshadowtechnique.cpp	2021-10-03 10:32:17.857662783 -0400
++++ b/components/sceneutil/mwshadowtechnique.cpp	2021-10-03 10:32:37.375824710 -0400
+@@ -23,6 +23,7 @@
+ #include <osg/Geometry>
+ #include <osg/io_utils>
+ 
++#include <limits>
+ #include <sstream>
+ 
+ namespace {
+--- a/components/sceneutil/shadow.cpp	2021-10-03 10:34:16.148644181 -0400
++++ b/components/sceneutil/shadow.cpp	2021-10-03 10:34:30.669764651 -0400
+@@ -5,6 +5,8 @@
+ #include <components/sceneutil/vismask.hpp>
+ #include <components/settings/settings.hpp>
+ 
++#include <limits>
++
+ namespace SceneUtil
+ {
+     using namespace osgShadow;
+--- a/components/terrain/quadtreeworld.cpp	2021-10-03 10:45:11.622080649 -0400
++++ b/components/terrain/quadtreeworld.cpp	2021-10-03 10:45:21.492162190 -0400
+@@ -2,6 +2,7 @@
+ 
+ #include <osgUtil/CullVisitor>
+ 
++#include <limits>
+ #include <sstream>
+ 
+ #include <components/misc/constants.hpp>
+--- a/components/detournavigator/offmeshconnectionsmanager.hpp	2021-10-03 10:49:07.574030007 -0400
++++ b/components/detournavigator/offmeshconnectionsmanager.hpp	2021-10-03 10:49:37.284275454 -0400
+@@ -13,6 +13,7 @@
+ 
+ #include <boost/optional.hpp>
+ 
++#include <algorithm>
+ #include <map>
+ #include <mutex>
+ #include <unordered_map>

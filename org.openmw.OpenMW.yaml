@@ -141,6 +141,8 @@ modules:
       - type: git
         url: https://gitlab.com/OpenMW/openmw.git
         tag: openmw-0.46.0
+      - type: patch
+        path: openmw-46-platform-fix.patch
       - type: shell
         commands:
           - "sed -i 's:>org.openmw.launcher.desktop<:>org.openmw.OpenMW.desktop<:' files/openmw.appdata.xml"
