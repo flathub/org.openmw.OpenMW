@@ -175,7 +175,7 @@ modules:
         commit: b81df8af9c42da9ead15791ce020ac085bbad494
       - type: shell
         commands:
-          - "sed -i 's:/wiki\.:/old-wiki\.:' files/openmw.appdata.xml"
+          - "sed -i 's:/wiki:/old-wiki:' files/openmw.appdata.xml"
           - "sed -i 's:>org.openmw.launcher.desktop<:>org.openmw.OpenMW.desktop<:' files/openmw.appdata.xml"
           - "sed -i 's:Icon=openmw:Icon=org.openmw.OpenMW.png:' files/org.openmw.launcher.desktop"
           - "sed -i 's:Icon=openmw-cs:Icon=org.openmw.OpenMW.OpenCS.png:' files/org.openmw.cs.desktop"
