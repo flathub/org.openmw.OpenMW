@@ -5,7 +5,6 @@ runtime-version: '5.15-21.08'
 sdk: org.kde.Sdk
 command: openmw-launcher
 rename-appdata-file: openmw.appdata.xml
-rename-desktop-file: org.openmw.launcher.desktop
 finish-args:
   - "--share=ipc"
   - "--socket=x11"
@@ -30,9 +29,29 @@ cleanup:
   - "*.a"
 
 modules:
+  - name: boost
+    buildsystem: simple
+    build-commands:
+      - ./bootstrap.sh --prefix=/app --with-libraries=filesystem,iostreams,program_options,system
+      - ./b2 headers
+      - ./b2 install
+    sources:
+      - type: archive
+        url: https://boostorg.jfrog.io/artifactory/main/release/1.75.0/source/boost_1_75_0.tar.gz
+        sha256: aeb26f80e80945e82ee93e5939baebdca47b9dee80a07d3144be1e1a6a66dd6a
+
+  - name: collada-dom
+    buildsystem: cmake-ninja
+    config-opts:
+      - "-DOPT_COLLADA14=1"
+      - "-DOPT_COLLADA15=0"
+    sources:
+      - type: archive
+        url: https://github.com/rdiankov/collada-dom/archive/c1e20b7d6ff806237030fe82f126cb86d661f063.zip
+        sha256: 6c51cd068c7d6760b587391884942caaac8a515d138535041e42d00d3e5c9152
+
   - name: ffmpeg
     config-opts:
-      - "--disable-everything"
       - "--disable-static"
       - "--enable-shared"
       - "--disable-programs"
@@ -41,13 +60,16 @@ modules:
       - "--disable-avfilter"
       - "--disable-postproc"
 
-      # Enough to run the base game, might need extending for mod content
-      - "--enable-decoder=bink,binkaudio_rdft,mp3,pcm_s16le,vorbis"
-      - "--enable-demuxer=bink,mp3,ogg,pcm_s16le,wav"
+      - "--disable-encoders"
+      - "--disable-muxers"
+      - "--disable-protocols"
+      - "--disable-indevs"
+      - "--disable-devices"
+      - "--disable-filters"
     sources:
       - type: archive
-        url: http://ffmpeg.org/releases/ffmpeg-4.2.2.tar.xz
-        sha256: cb754255ab0ee2ea5f66f8850e1bd6ad5cac1cd855d0a2f4990fb8c668b0d29c
+        url: http://ffmpeg.org/releases/ffmpeg-4.3.2.tar.xz
+        sha256: 46e4e64f1dd0233cbc0934b9f1c0da676008cad34725113fb7f802cfa84ccddb
     cleanup:
       - "/share/ffmpeg"
 
@@ -57,24 +79,21 @@ modules:
       - "-DBUILD_OSG_PLUGINS_BY_DEFAULT=0"
       - "-DBUILD_OSG_PLUGIN_OSG=1"
       - "-DBUILD_OSG_PLUGIN_DDS=1"
+      - "-DBUILD_OSG_PLUGIN_DAE=1"
       - "-DBUILD_OSG_PLUGIN_TGA=1"
       - "-DBUILD_OSG_PLUGIN_BMP=1"
       - "-DBUILD_OSG_PLUGIN_JPEG=1"
       - "-DBUILD_OSG_PLUGIN_PNG=1"
       - "-DBUILD_OSG_DEPRECATED_SERIALIZERS=0"
       - "-DBUILD_OSG_APPLICATIONS=0"
-      - "-DDESIRED_QT_VERSION=5"
       - "-DCMAKE_BUILD_TYPE=Release"
+    build-options:
+      env:
+        COLLADA_DIR: /app/include/collada-dom2.5
     sources:
       - type: archive
-        url: https://github.com/openscenegraph/OpenSceneGraph/archive/OpenSceneGraph-3.6.5.tar.gz
-        sha256: aea196550f02974d6d09291c5d83b51ca6a03b3767e234a8c0e21322927d1e12
-      - type: patch
-        path: osg-tga-fix-1.patch
-      - type: patch
-        path: osg-tga-fix-2.patch
-      - type: patch
-        path: osg-prevent_immutability.patch
+        url: https://github.com/openmw/osg/archive/76e061739610bc9a3420a59e7c9395e742ce2f97.zip
+        sha256: fa1100362eae260192819d65d90b29ec0b88fdf80e30cee677730b7a0d68637e
 
   - name: bullet
     # The cmake + ninja buildsystem doesn't install the required binaries correctly
@@ -89,10 +108,12 @@ modules:
       - "-DCMAKE_BUILD_TYPE=Release"
       - "-DUSE_GLUT=0"
       - "-DUSE_GRAPHICAL_BENCHMARK=0"
+      - "-DUSE_DOUBLE_PRECISION=on"
+      - "-DBULLET2_MULTITHREADING=on"
     sources:
       - type: archive
-        url: https://github.com/bulletphysics/bullet3/archive/2.89.tar.gz
-        sha256: 621b36e91c0371933f3c2156db22c083383164881d2a6b84636759dc4cbb0bb8
+        url: https://github.com/bulletphysics/bullet3/archive/93be7e644024e92df13b454a4a0b0fcd02b21b10.zip
+        sha256: 82968fbf20a92c51bc71ac9ee8f6381ecf3420c7cbb881ffb7bb633fa13b27f9
 
   - name: mygui
     buildsystem: cmake-ninja
@@ -104,8 +125,8 @@ modules:
       - "-DMYGUI_BUILD_PLUGINS=0"
     sources:
       - type: archive
-        url: https://github.com/MyGUI/mygui/archive/MyGUI3.4.0.tar.gz
-        sha256: d1d5f294670ae71f7200ed4b30859018281d8cfd45d6a38d18b97a4aba604c42
+        url: https://github.com/MyGUI/mygui/archive/refs/tags/MyGUI3.4.1.tar.gz
+        sha256: bdf730bdeb4ad89e6b8223967db01aa5274d2b93adc2c0d6aa4842faeed4de1a
 
   - name: libunshield
     buildsystem: cmake-ninja
@@ -116,16 +137,27 @@ modules:
         url: https://github.com/twogood/unshield/archive/1.4.3.tar.gz
         sha256: aa8c978dc0eb1158d266eaddcd1852d6d71620ddfc82807fe4bf2e19022b7bab
 
-  - name: boost
+  - name: lz4
     buildsystem: simple
     build-commands:
-      - "./bootstrap.sh --prefix=/app --with-libraries=filesystem,iostreams,program_options,system"
-      - "./b2 headers -j $FLATPAK_BUILDER_N_JOBS"
-      - "./b2 install -j $FLATPAK_BUILDER_N_JOBS"
+      - "make lib"
+      - "PREFIX=/app make install"
     sources:
       - type: archive
-        url: https://boostorg.jfrog.io/artifactory/main/release/1.75.0/source/boost_1_75_0.tar.gz
-        sha256: aeb26f80e80945e82ee93e5939baebdca47b9dee80a07d3144be1e1a6a66dd6a
+        url: https://github.com/lz4/lz4/archive/refs/tags/v1.9.3.tar.gz
+        sha256: 030644df4611007ff7dc962d981f390361e6c97a34e5cbc393ddfbe019ffe2c1
+
+  - name: recastnavigation
+    buildsystem: cmake-ninja
+    config-opts:
+      - "-DCMAKE_BUILD_TYPE=Release"
+      - "-DRECASTNAVIGATION_DEMO=no"
+      - "-DRECASTNAVIGATION_TESTS=no"
+      - "-DRECASTNAVIGATION_EXAMPLES=no"
+    sources:
+      - type: archive
+        url: https://github.com/recastnavigation/recastnavigation/archive/c5cbd53024c8a9d8d097a4371215e3342d2fdc87.zip
+        sha256: 53dacfd7bead4d3b0c9a04a648caed3e7c3900e0aba765c15dee26b50f6103c6
 
   - name: openmw
     builddir: true
@@ -133,20 +165,21 @@ modules:
     config-opts:
       - "-DBUILD_BSATOOL=no"
       - "-DBUILD_ESMTOOL=no"
-      - "-DBUILD_MYGUI_PLUGIN=no"
-      - "-DDESIRED_QT_VERSION=5"
       - "-DCMAKE_BUILD_TYPE=Release"
       - "-DICONDIR=/app/share/icons"
+      - "-DOPENMW_USE_SYSTEM_RECASTNAVIGATION=yes"
     sources:
       - type: git
         url: https://gitlab.com/OpenMW/openmw.git
-        tag: openmw-0.46.0
+        tag: openmw-0.47.0
       - type: shell
         commands:
+          - "sed -i 's:/wiki:/old-wiki:' files/openmw.appdata.xml"
           - "sed -i 's:>org.openmw.launcher.desktop<:>org.openmw.OpenMW.desktop<:' files/openmw.appdata.xml"
           - "sed -i 's:Icon=openmw:Icon=org.openmw.OpenMW.png:' files/org.openmw.launcher.desktop"
           - "sed -i 's:Icon=openmw-cs:Icon=org.openmw.OpenMW.OpenCS.png:' files/org.openmw.cs.desktop"
     post-install:
+      - "mv /app/share/applications/org.openmw.launcher.desktop /app/share/applications/org.openmw.OpenMW.desktop"
       - "mv /app/share/applications/org.openmw.cs.desktop /app/share/applications/org.openmw.OpenMW.OpenCS.desktop"
       - "mv /app/share/icons/openmw.png /app/share/icons/org.openmw.OpenMW.png"
       - "mv /app/share/icons/openmw-cs.png /app/share/icons/org.openmw.OpenMW.OpenCS.png"
