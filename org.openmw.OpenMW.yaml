@@ -163,7 +163,7 @@ modules:
     builddir: true
     buildsystem: cmake-ninja
     config-opts:
-      - "-DBUILD_BSATOOL=no"
+      - "-DBUILD_BSATOOL=yes"
       - "-DBUILD_ESMTOOL=no"
       - "-DCMAKE_BUILD_TYPE=Release"
       - "-DICONDIR=/app/share/icons"
