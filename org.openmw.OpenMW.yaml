@@ -172,6 +172,8 @@ modules:
       - type: git
         url: https://gitlab.com/OpenMW/openmw.git
         tag: openmw-0.47.0
+      - type: patch
+        path: appstream.patch
       - type: shell
         commands:
           - "sed -i 's:>org.openmw.launcher.desktop<:>org.openmw.OpenMW.desktop<:' files/openmw.appdata.xml"
