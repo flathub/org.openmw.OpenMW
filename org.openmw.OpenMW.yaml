@@ -92,8 +92,8 @@ modules:
         COLLADA_DIR: /app/include/collada-dom2.5
     sources:
       - type: archive
-        url: https://github.com/openmw/osg/archive/76e061739610bc9a3420a59e7c9395e742ce2f97.zip
-        sha256: fa1100362eae260192819d65d90b29ec0b88fdf80e30cee677730b7a0d68637e
+        url: https://github.com/openmw/osg/archive/ada34a6d38772f684aa70d2eb76549a33edc9a5f.zip
+        sha256: 525e398f65dd218e8f6063f315be7a69eccf66d210babfdf177b389cb7ed0c93
 
   - name: bullet
     # The cmake + ninja buildsystem doesn't install the required binaries correctly
