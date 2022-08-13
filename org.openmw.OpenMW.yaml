@@ -92,8 +92,8 @@ modules:
         COLLADA_DIR: /app/include/collada-dom2.5
     sources:
       - type: archive
-        url: https://github.com/openmw/osg/archive/ada34a6d38772f684aa70d2eb76549a33edc9a5f.zip
-        sha256: 525e398f65dd218e8f6063f315be7a69eccf66d210babfdf177b389cb7ed0c93
+        url: https://github.com/openmw/osg/archive/dd803bc1e6bc5aa5ab499b9501e3e52df7360cd6.zip
+        sha256: e791af6fd1fd7d37146aa11e2c6c0ba21de2c2bca4274d4cb0523647003e3fa8
 
   - name: bullet
     # The cmake + ninja buildsystem doesn't install the required binaries correctly
@@ -159,6 +159,23 @@ modules:
         url: https://github.com/recastnavigation/recastnavigation/archive/c5cbd53024c8a9d8d097a4371215e3342d2fdc87.zip
         sha256: 53dacfd7bead4d3b0c9a04a648caed3e7c3900e0aba765c15dee26b50f6103c6
 
+  - name: yaml-cpp
+    buildsystem: cmake-ninja
+    sources:
+      - type: archive
+        url: https://github.com/jbeder/yaml-cpp/archive/refs/tags/yaml-cpp-0.7.0.tar.gz
+        sha256: 43e6a9fcb146ad871515f0d0873947e5d497a1c9c60c58cb102a97b47208b7c3
+
+  - name: luajit
+    buildsystem: simple
+    build-commands:
+      - "make PREFIX=/app"
+      - "make install PREFIX=/app"
+    sources:
+      - type: archive
+        url: https://github.com/LuaJIT/LuaJIT/archive/refs/tags/v2.0.5.tar.gz
+        sha256: 8bb29d84f06eb23c7ea4aa4794dbb248ede9fcb23b6989cbef81dc79352afc97
+
   - name: openmw
     builddir: true
     buildsystem: cmake-ninja
@@ -171,9 +188,7 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/OpenMW/openmw.git
-        branch: master
-      - type: patch
-        path: appstream.patch
+        branch: openmw-48
       - type: shell
         commands:
           - "sed -i 's:>org.openmw.launcher.desktop<:>org.openmw.OpenMW.desktop<:' files/openmw.appdata.xml"
