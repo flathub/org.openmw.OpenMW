@@ -1,7 +1,7 @@
 ---
 app-id: org.openmw.OpenMW
 runtime: org.kde.Platform
-runtime-version: '5.15-21.08'
+runtime-version: '5.15-22.08'
 sdk: org.kde.Sdk
 command: openmw-launcher
 rename-appdata-file: openmw.appdata.xml
@@ -189,6 +189,7 @@ modules:
       - type: git
         url: https://gitlab.com/OpenMW/openmw.git
         branch: openmw-48
+        commit: fff497c20578037e68f1293e08c23146789015f2
       - type: shell
         commands:
           - "sed -i 's:>org.openmw.launcher.desktop<:>org.openmw.OpenMW.desktop<:' files/openmw.appdata.xml"
