@@ -189,6 +189,7 @@ modules:
       - type: git
         url: https://gitlab.com/OpenMW/openmw.git
         branch: openmw-48
+        commit: fff497c20578037e68f1293e08c23146789015f2
       - type: shell
         commands:
           - "sed -i 's:>org.openmw.launcher.desktop<:>org.openmw.OpenMW.desktop<:' files/openmw.appdata.xml"
