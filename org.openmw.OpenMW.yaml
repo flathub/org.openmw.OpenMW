@@ -188,7 +188,7 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/OpenMW/openmw.git
-        tag: openmw-48-rc8
+        tag: openmw-48-rc9
       - type: shell
         commands:
           - "sed -i 's:>org.openmw.launcher.desktop<:>org.openmw.OpenMW.desktop<:' files/openmw.appdata.xml"
