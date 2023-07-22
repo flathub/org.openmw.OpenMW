@@ -1,7 +1,7 @@
 ---
 app-id: org.openmw.OpenMW
 runtime: org.kde.Platform
-runtime-version: '5.15-21.08'
+runtime-version: '5.15-22.08'
 sdk: org.kde.Sdk
 command: openmw-launcher
 rename-appdata-file: openmw.appdata.xml
@@ -92,8 +92,8 @@ modules:
         COLLADA_DIR: /app/include/collada-dom2.5
     sources:
       - type: archive
-        url: https://github.com/openmw/osg/archive/76e061739610bc9a3420a59e7c9395e742ce2f97.zip
-        sha256: fa1100362eae260192819d65d90b29ec0b88fdf80e30cee677730b7a0d68637e
+        url: https://github.com/openmw/osg/archive/dd803bc1e6bc5aa5ab499b9501e3e52df7360cd6.zip
+        sha256: e791af6fd1fd7d37146aa11e2c6c0ba21de2c2bca4274d4cb0523647003e3fa8
 
   - name: bullet
     # The cmake + ninja buildsystem doesn't install the required binaries correctly
@@ -159,6 +159,23 @@ modules:
         url: https://github.com/recastnavigation/recastnavigation/archive/c5cbd53024c8a9d8d097a4371215e3342d2fdc87.zip
         sha256: 53dacfd7bead4d3b0c9a04a648caed3e7c3900e0aba765c15dee26b50f6103c6
 
+  - name: yaml-cpp
+    buildsystem: cmake-ninja
+    sources:
+      - type: archive
+        url: https://github.com/jbeder/yaml-cpp/archive/refs/tags/yaml-cpp-0.7.0.tar.gz
+        sha256: 43e6a9fcb146ad871515f0d0873947e5d497a1c9c60c58cb102a97b47208b7c3
+
+  - name: luajit
+    buildsystem: simple
+    build-commands:
+      - "make PREFIX=/app"
+      - "make install PREFIX=/app"
+    sources:
+      - type: archive
+        url: https://github.com/LuaJIT/LuaJIT/archive/refs/tags/v2.0.5.tar.gz
+        sha256: 8bb29d84f06eb23c7ea4aa4794dbb248ede9fcb23b6989cbef81dc79352afc97
+
   - name: openmw
     builddir: true
     buildsystem: cmake-ninja
@@ -171,9 +188,7 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/OpenMW/openmw.git
-        tag: openmw-0.47.0
-      - type: patch
-        path: appstream.patch
+        tag: openmw-0.48.0
       - type: shell
         commands:
           - "sed -i 's:>org.openmw.launcher.desktop<:>org.openmw.OpenMW.desktop<:' files/openmw.appdata.xml"
