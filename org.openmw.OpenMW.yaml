@@ -9,7 +9,8 @@ finish-args:
   - "--share=ipc"
   - "--socket=x11"
   - "--device=all"
-  - "--filesystem=host"
+  - "--filesystem=/run/media:ro"
+  - "--filesystem=home"
   - "--socket=pulseaudio"
 build-options:
   cflags: "-O2 -g"
