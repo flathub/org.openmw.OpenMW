@@ -1,7 +1,7 @@
 ---
 app-id: org.openmw.OpenMW
 runtime: org.kde.Platform
-runtime-version: '5.15-23.08'
+runtime-version: '5.15-24.08'
 sdk: org.kde.Sdk
 command: openmw-launcher
 rename-appdata-file: openmw.appdata.xml
@@ -53,6 +53,8 @@ modules:
       - type: archive
         url: https://github.com/rdiankov/collada-dom/archive/c1e20b7d6ff806237030fe82f126cb86d661f063.tar.gz
         sha256: 8013dda9976fdf62e187ebbcd68e1a1d935f55da89ad8ad87b373e96491767d5
+      - type: patch
+        path: collada-dom-build.patch
 
   - name: ffmpeg
     config-opts:
