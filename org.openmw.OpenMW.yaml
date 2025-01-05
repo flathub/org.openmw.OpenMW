@@ -241,7 +241,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/OpenMW/openmw.git
-        tag: master
+        branch: openmw-49
+        commit: 52d1493500d7f88213fb72d3f9b5ac0dd4f3a74f # RC 1
       - type: shell
         commands:
           - "sed -i 's:>org.openmw.launcher.desktop<:>org.openmw.OpenMW.desktop<:' files/openmw.appdata.xml"
