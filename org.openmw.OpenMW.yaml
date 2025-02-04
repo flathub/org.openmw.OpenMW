@@ -12,7 +12,7 @@ finish-args:
   - "--filesystem=host"
   - "--socket=pulseaudio"
 build-options:
-  cflags: "-O2 -g"
+  cflags: "-O2 -g -Wno-incompatible-pointer-types"
   cxxflags: "-O2 -g"
 cleanup:
   - "/include"
