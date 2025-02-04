@@ -68,8 +68,8 @@ modules:
       - "--disable-filters"
     sources:
       - type: archive
-        url: http://ffmpeg.org/releases/ffmpeg-4.3.2.tar.xz
-        sha256: 46e4e64f1dd0233cbc0934b9f1c0da676008cad34725113fb7f802cfa84ccddb
+        url: http://ffmpeg.org/releases/ffmpeg-4.3.8.tar.xz
+        sha256: 103fd01f78c596c4c974ddf180dabaf149a86d234988895a0e566a5ff4afa444
     cleanup:
       - "/share/ffmpeg"
 
