@@ -37,12 +37,12 @@ modules:
       - ./b2 install
     sources:
       - type: archive
-        url: https://github.com/boostorg/boost/releases/download/boost-1.82.0/boost-1.82.0.tar.xz
-        sha256: fd60da30be908eff945735ac7d4d9addc7f7725b1ff6fcdcaede5262d511d21e
+        url: https://github.com/boostorg/boost/releases/download/boost-1.87.0/boost-1.87.0-b2-nodocs.tar.xz
+        sha256: 3abd7a51118a5dd74673b25e0a3f0a4ab1752d8d618f4b8cea84a603aeecc680
         x-checker-data:
           type: anitya
           project-id: 6845
-          url-template: https://github.com/boostorg/boost/releases/download/boost-$version/boost-$version.tar.xz
+          url-template: https://github.com/boostorg/boost/releases/download/boost-$version/boost-$version-b2-nodocs.tar.xz
 
   - name: collada-dom
     buildsystem: cmake-ninja
@@ -163,8 +163,8 @@ modules:
       - "-DCMAKE_BUILD_TYPE=Release"
     sources:
       - type: archive
-        url: https://github.com/twogood/unshield/archive/1.4.3.tar.gz
-        sha256: aa8c978dc0eb1158d266eaddcd1852d6d71620ddfc82807fe4bf2e19022b7bab
+        url: https://github.com/twogood/unshield/archive/1.5.1.tar.gz
+        sha256: 34cd97ff1e6f764436d71676e3d6842dc7bd8e2dd5014068da5c560fe4661f60
         x-checker-data:
           type: anitya
           project-id: 16008
@@ -221,8 +221,8 @@ modules:
     sources:
       # LuaJIT uses a rolling tag, so download based on the commit hash instead of the tag name
       - type: archive
-        url: https://github.com/LuaJIT/LuaJIT/archive/19878ec05c239ccaf5f3d17af27670a963e25b8b.tar.gz
-        sha256: e91acbe181cf6ffa3ef15870b8e620131002240ba24c5c779fd0131db021517f
+        url: https://github.com/LuaJIT/LuaJIT/archive/a4f56a459a588ae768801074b46ba0adcfb49eb1.tar.gz
+        sha256: b4120332a4191db9c9da2d81f9f11f0d4504fc4cff2dea0f642d3d8f1fcebd0e
         x-checker-data:
           type: json
           url: https://api.github.com/repos/LuaJIT/LuaJIT/branches/v2.1
