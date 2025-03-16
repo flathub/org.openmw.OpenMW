@@ -74,8 +74,8 @@ modules:
       - "--disable-filters"
     sources:
       - type: archive
-        url: http://ffmpeg.org/releases/ffmpeg-7.1.tar.xz
-        sha256: 40973d44970dbc83ef302b0609f2e74982be2d85916dd2ee7472d30678a7abe6
+        url: http://ffmpeg.org/releases/ffmpeg-7.1.1.tar.xz
+        sha256: 733984395e0dbbe5c046abda2dc49a5544e7e0e1e2366bba849222ae9e3a03b1
         x-checker-data:
           type: anitya
           project-id: 5405
@@ -221,8 +221,8 @@ modules:
     sources:
       # LuaJIT uses a rolling tag, so download based on the commit hash instead of the tag name
       - type: archive
-        url: https://github.com/LuaJIT/LuaJIT/archive/a4f56a459a588ae768801074b46ba0adcfb49eb1.tar.gz
-        sha256: b4120332a4191db9c9da2d81f9f11f0d4504fc4cff2dea0f642d3d8f1fcebd0e
+        url: https://github.com/LuaJIT/LuaJIT/archive/538a82133ad6fddfd0ca64de167c4aca3bc1a2da.tar.gz
+        sha256: 7acbc36be8f21072422eb9a5e5fc468d0eaa55bec1b70260d651e845684621e2
         x-checker-data:
           type: json
           url: https://api.github.com/repos/LuaJIT/LuaJIT/branches/v2.1
@@ -241,7 +241,7 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/OpenMW/openmw.git
-        tag: openmw-49-rc5
+        tag: openmw-49-rc6
       - type: shell
         commands:
           - "sed -i 's:>org.openmw.launcher.desktop<:>org.openmw.OpenMW.desktop<:' files/openmw.appdata.xml"
