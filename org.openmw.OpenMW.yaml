@@ -221,8 +221,8 @@ modules:
     sources:
       # LuaJIT uses a rolling tag, so download based on the commit hash instead of the tag name
       - type: archive
-        url: https://github.com/LuaJIT/LuaJIT/archive/eec7a8016c3381b949b5d84583800d05897fa960.tar.gz
-        sha256: 220e2fd49f3a50abda874b888ac31e6cf86dd7ed3f221ebb47515315d9815eeb
+        url: https://github.com/LuaJIT/LuaJIT/archive/f9140a622a0c44a99efb391cc1c2358bc8098ab7.tar.gz
+        sha256: 2d3f26c3261f46ae59d3e9489c632e3910f2033c657a24a90666ee0acf032463
         x-checker-data:
           type: json
           url: https://api.github.com/repos/LuaJIT/LuaJIT/branches/v2.1
@@ -241,7 +241,7 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/OpenMW/openmw.git
-        tag: openmw-49-rc7
+        tag: openmw-49-rc8
       - type: shell
         commands:
           - "sed -i 's:>org.openmw.launcher.desktop<:>org.openmw.OpenMW.desktop<:' files/openmw.appdata.xml"
