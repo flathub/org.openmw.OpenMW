@@ -1,7 +1,7 @@
 ---
 app-id: org.openmw.OpenMW
 runtime: org.kde.Platform
-runtime-version: '6.8'
+runtime-version: '6.9'
 sdk: org.kde.Sdk
 command: openmw-launcher
 rename-appdata-file: openmw.appdata.xml
@@ -241,7 +241,7 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/OpenMW/openmw.git
-        tag: openmw-49-rc8
+        tag: openmw-49-rc9
       - type: shell
         commands:
           - "sed -i 's:>org.openmw.launcher.desktop<:>org.openmw.OpenMW.desktop<:' files/openmw.appdata.xml"
