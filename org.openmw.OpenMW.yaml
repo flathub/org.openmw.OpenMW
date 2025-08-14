@@ -244,6 +244,8 @@ modules:
       - type: git
         url: https://gitlab.com/OpenMW/openmw.git
         tag: openmw-0.49.0
+      - type: patch
+        path: openmw-build.patch
       - type: shell
         commands:
           - sed -i 's:>org.openmw.launcher.desktop<:>org.openmw.OpenMW.desktop<:'
