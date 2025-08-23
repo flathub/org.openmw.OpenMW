@@ -65,7 +65,6 @@ modules:
       - --disable-doc
       - --disable-avdevice
       - --disable-avfilter
-      - --disable-postproc
 
       - --disable-encoders
       - --disable-muxers
