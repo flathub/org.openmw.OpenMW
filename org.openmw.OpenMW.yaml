@@ -144,20 +144,6 @@ modules:
           project-id: 16008
           url-template: https://github.com/twogood/unshield/archive/$version.tar.gz
 
-  - name: lz4
-    buildsystem: simple
-    build-commands:
-      - make lib
-      - PREFIX=/app make install
-    sources:
-      - type: archive
-        url: https://github.com/lz4/lz4/archive/v1.10.0.tar.gz
-        sha256: 537512904744b35e232912055ccf8ec66d768639ff3abe5788d90d792ec5f48b
-        x-checker-data:
-          type: anitya
-          project-id: 1865
-          url-template: https://github.com/lz4/lz4/archive/v$version.tar.gz
-
   - name: recastnavigation
     buildsystem: cmake-ninja
     config-opts:
