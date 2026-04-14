@@ -1,7 +1,7 @@
 ---
 app-id: org.openmw.OpenMW
 runtime: org.kde.Platform
-runtime-version: '6.9'
+runtime-version: '6.10'
 sdk: org.kde.Sdk
 command: openmw-launcher
 rename-appdata-file: openmw.appdata.xml
@@ -38,8 +38,8 @@ modules:
       - ./b2 install
     sources:
       - type: archive
-        url: https://github.com/boostorg/boost/releases/download/boost-1.89.0/boost-1.89.0-b2-nodocs.tar.xz
-        sha256: 875cc413afa6b86922b6df3b2ad23dec4511c8a741753e57c1129e7fa753d700
+        url: https://github.com/boostorg/boost/releases/download/boost-1.90.0/boost-1.90.0-b2-nodocs.tar.xz
+        sha256: 9e6bee9ab529fb2b0733049692d57d10a72202af085e553539a05b4204211a6f
         x-checker-data:
           type: anitya
           project-id: 6845
@@ -48,6 +48,7 @@ modules:
   - name: collada-dom
     buildsystem: cmake-ninja
     config-opts:
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
       - -DOPT_COLLADA14=1
       - -DOPT_COLLADA15=0
     sources:
@@ -56,32 +57,6 @@ modules:
         sha256: 8013dda9976fdf62e187ebbcd68e1a1d935f55da89ad8ad87b373e96491767d5
       - type: patch
         path: collada-dom-build.patch
-
-  - name: ffmpeg
-    config-opts:
-      - --disable-static
-      - --enable-shared
-      - --disable-programs
-      - --disable-doc
-      - --disable-avdevice
-      - --disable-avfilter
-
-      - --disable-encoders
-      - --disable-muxers
-      - --disable-protocols
-      - --disable-indevs
-      - --disable-devices
-      - --disable-filters
-    sources:
-      - type: archive
-        url: http://ffmpeg.org/releases/ffmpeg-8.0.tar.xz
-        sha256: b2751fccb6cc4c77708113cd78b561059b6fa904b24162fa0be2d60273d27b8e
-        x-checker-data:
-          type: anitya
-          project-id: 5405
-          url-template: http://ffmpeg.org/releases/ffmpeg-$version.tar.xz
-    cleanup:
-      - /share/ffmpeg
 
   - name: openscenegraph
     buildsystem: cmake-ninja
@@ -106,8 +81,8 @@ modules:
         COLLADA_DIR: /app/include/collada-dom2.5
     sources:
       - type: archive
-        url: https://github.com/openmw/osg/archive/aa66653fde55365671eb9038b9392cf952ec7a05.tar.gz
-        sha256: ee13f61931b3d26ef3a35457fa9a6978413733126da21626334b37fd478984d4
+        url: https://github.com/openmw/osg/archive/8aa8d91747ff414ab0de19aae1e0dbd739acea2c.tar.gz
+        sha256: e91a1510bd73cbe1af580b70945a36424bdcc9aa9002174cafa76e4f6f27fd4e
         x-checker-data:
           type: json
           url: https://api.github.com/repos/openmw/osg/branches/3.6
@@ -118,6 +93,7 @@ modules:
     # The cmake + ninja buildsystem doesn't install the required binaries correctly
     buildsystem: cmake
     config-opts:
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
       - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_BULLET2_DEMOS=0
       - -DBUILD_BULLET3=0
@@ -170,23 +146,10 @@ modules:
           project-id: 16008
           url-template: https://github.com/twogood/unshield/archive/$version.tar.gz
 
-  - name: lz4
-    buildsystem: simple
-    build-commands:
-      - make lib
-      - PREFIX=/app make install
-    sources:
-      - type: archive
-        url: https://github.com/lz4/lz4/archive/v1.10.0.tar.gz
-        sha256: 537512904744b35e232912055ccf8ec66d768639ff3abe5788d90d792ec5f48b
-        x-checker-data:
-          type: anitya
-          project-id: 1865
-          url-template: https://github.com/lz4/lz4/archive/v$version.tar.gz
-
   - name: recastnavigation
     buildsystem: cmake-ninja
     config-opts:
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
       - -DCMAKE_BUILD_TYPE=Release
       - -DRECASTNAVIGATION_DEMO=no
       - -DRECASTNAVIGATION_TESTS=no
@@ -207,12 +170,12 @@ modules:
     buildsystem: cmake-ninja
     sources:
       - type: archive
-        url: https://github.com/jbeder/yaml-cpp/archive/0.8.0.tar.gz
-        sha256: fbe74bbdcee21d656715688706da3c8becfd946d92cd44705cc6098bb23b3a16
+        url: https://github.com/jbeder/yaml-cpp/archive/yaml-cpp-0.9.0.tar.gz
+        sha256: 25cb043240f828a8c51beb830569634bc7ac603978e0f69d6b63558dadefd49a
         x-checker-data:
           type: anitya
           project-id: 5284
-          url-template: https://github.com/jbeder/yaml-cpp/archive/$version.tar.gz
+          url-template: https://github.com/jbeder/yaml-cpp/archive/yaml-cpp-$version.tar.gz
 
   - name: luajit
     buildsystem: simple
@@ -222,8 +185,8 @@ modules:
     sources:
       # LuaJIT uses a rolling tag, so download based on the commit hash instead of the tag name
       - type: archive
-        url: https://github.com/LuaJIT/LuaJIT/archive/25a61a182166fec06f1a1a025eb8fabbb6cf483e.tar.gz
-        sha256: 3fca2bb5068d7150d324a34eaac555757b8ce94f15565e0a0552373f7534081e
+        url: https://github.com/LuaJIT/LuaJIT/archive/18b087cd2cd4ddc4a79782bf155383a689d5093d.tar.gz
+        sha256: 88a592afa9907d6b0c6e1e7ac9b39982622e3ca086f0646d4ea89b0e4e81f093
         x-checker-data:
           type: json
           url: https://api.github.com/repos/LuaJIT/LuaJIT/branches/v2.1
@@ -242,9 +205,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/OpenMW/openmw.git
-        tag: openmw-50-rc2
-      - type: patch
-        path: openmw-build.patch
+        tag: openmw-51-rc1
+        commit: b850d13e58ca3ed4b7a5cd52d6e74e3282d6e902
       - type: shell
         commands:
           - sed -i 's:>org.openmw.launcher.desktop<:>org.openmw.OpenMW.desktop<:'
