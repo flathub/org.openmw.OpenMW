@@ -1,7 +1,6 @@
----
 app-id: org.openmw.OpenMW
 runtime: org.kde.Platform
-runtime-version: '6.9'
+runtime-version: '6.10'
 sdk: org.kde.Sdk
 command: openmw-launcher
 rename-appdata-file: openmw.appdata.xml
@@ -17,29 +16,22 @@ build-options:
   cxxflags: -O2 -g
 cleanup:
   - /include
-  - /lib/pkgconfig
   - /lib/cmake
-  - /share/pkgconfig
-  - /share/aclocal
-  - /share/doc
-  - /man
+  - /lib/pkgconfig
   - /share/man
-  - /share/gtk-doc
-  - /share/vala
   - '*.la'
   - '*.a'
-
 modules:
   - name: boost
     buildsystem: simple
     build-commands:
-      - ./bootstrap.sh --prefix=/app --with-libraries=filesystem,iostreams,program_options,system
+      - ./bootstrap.sh --prefix=/app --with-libraries=filesystem,iostreams,program_options
       - ./b2 headers
       - ./b2 install
     sources:
       - type: archive
-        url: https://github.com/boostorg/boost/releases/download/boost-1.90.0/boost-1.90.0-b2-nodocs.tar.xz
-        sha256: 9e6bee9ab529fb2b0733049692d57d10a72202af085e553539a05b4204211a6f
+        url: https://github.com/boostorg/boost/releases/download/boost-1.91.0-1/boost-1.91.0-1-b2-nodocs.tar.xz
+        sha256: 7334bb672b9c7aa135da88bcc3111a64a198be9a7d44eb5151d9248e7cfd43ef
         x-checker-data:
           type: anitya
           project-id: 6845
@@ -50,6 +42,7 @@ modules:
     config-opts:
       - -DOPT_COLLADA14=1
       - -DOPT_COLLADA15=0
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     sources:
       - type: archive
         url: https://github.com/rdiankov/collada-dom/archive/c1e20b7d6ff806237030fe82f126cb86d661f063.tar.gz
@@ -103,6 +96,7 @@ modules:
       - -DUSE_GRAPHICAL_BENCHMARK=0
       - -DUSE_DOUBLE_PRECISION=on
       - -DBULLET2_MULTITHREADING=on
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     sources:
       - type: archive
         url: https://github.com/bulletphysics/bullet3/archive/3.25.tar.gz
@@ -151,6 +145,7 @@ modules:
       - -DRECASTNAVIGATION_DEMO=no
       - -DRECASTNAVIGATION_TESTS=no
       - -DRECASTNAVIGATION_EXAMPLES=no
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     sources:
       - type: archive
         url: https://github.com/recastnavigation/recastnavigation/archive/v1.6.0.tar.gz
@@ -165,14 +160,20 @@ modules:
 
   - name: yaml-cpp
     buildsystem: cmake-ninja
+    config-opts:
+      - -DCMAKE_BUILD_TYPE=Release
+      - -DBUILD_SHARED_LIBS=ON
+      - -DYAML_BUILD_SHARED_LIBS=ON
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
     sources:
       - type: archive
-        url: https://github.com/jbeder/yaml-cpp/archive/0.8.0.tar.gz
-        sha256: fbe74bbdcee21d656715688706da3c8becfd946d92cd44705cc6098bb23b3a16
+        url: https://github.com/jbeder/yaml-cpp/archive/yaml-cpp-0.9.0.tar.gz
+        sha256: 25cb043240f828a8c51beb830569634bc7ac603978e0f69d6b63558dadefd49a
         x-checker-data:
           type: anitya
           project-id: 5284
-          url-template: https://github.com/jbeder/yaml-cpp/archive/$version.tar.gz
+          stable-only: true
+          url-template: https://github.com/jbeder/yaml-cpp/archive/yaml-cpp-${version}.tar.gz
 
   - name: luajit
     buildsystem: simple
@@ -182,8 +183,8 @@ modules:
     sources:
       # LuaJIT uses a rolling tag, so download based on the commit hash instead of the tag name
       - type: archive
-        url: https://github.com/LuaJIT/LuaJIT/archive/18b087cd2cd4ddc4a79782bf155383a689d5093d.tar.gz
-        sha256: 88a592afa9907d6b0c6e1e7ac9b39982622e3ca086f0646d4ea89b0e4e81f093
+        url: https://github.com/LuaJIT/LuaJIT/archive/b925b3e3fc6771171602323b45fbe9fb8fc90369.tar.gz
+        sha256: 64093b16de26069824941be6c2537e1d18b360c4b4d7117393e68d3ebeb3c51a
         x-checker-data:
           type: json
           url: https://api.github.com/repos/LuaJIT/LuaJIT/branches/v2.1
