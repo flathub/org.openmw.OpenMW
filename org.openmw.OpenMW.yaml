@@ -205,8 +205,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/OpenMW/openmw.git
-        tag: openmw-51-rc2
-        commit: 673981c7f552089f1370d97fdac95e7221d4debc
+        tag: openmw-0.51.0
+        commit: f4bec41444214a7903bebd178389ca22ca13f646
       - type: shell
         commands:
           - sed -i 's:>org.openmw.launcher.desktop<:>org.openmw.OpenMW.desktop<:'
