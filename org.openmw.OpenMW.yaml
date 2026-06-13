@@ -38,8 +38,8 @@ modules:
       - ./b2 install
     sources:
       - type: archive
-        url: https://github.com/boostorg/boost/releases/download/boost-1.90.0/boost-1.90.0-b2-nodocs.tar.xz
-        sha256: 9e6bee9ab529fb2b0733049692d57d10a72202af085e553539a05b4204211a6f
+        url: https://github.com/boostorg/boost/releases/download/boost-1.91.0-1/boost-1.91.0-1-b2-nodocs.tar.xz
+        sha256: 7334bb672b9c7aa135da88bcc3111a64a198be9a7d44eb5151d9248e7cfd43ef
         x-checker-data:
           type: anitya
           project-id: 6845
@@ -182,8 +182,8 @@ modules:
     sources:
       # LuaJIT uses a rolling tag, so download based on the commit hash instead of the tag name
       - type: archive
-        url: https://github.com/LuaJIT/LuaJIT/archive/18b087cd2cd4ddc4a79782bf155383a689d5093d.tar.gz
-        sha256: 88a592afa9907d6b0c6e1e7ac9b39982622e3ca086f0646d4ea89b0e4e81f093
+        url: https://github.com/LuaJIT/LuaJIT/archive/194d7f2d635a11193177f0ed820ae419148f0b70.tar.gz
+        sha256: 6a9c168d002f698bd8c76d5bb2e3ee3615297c9c8e4cf00992a04a4e5baaac56
         x-checker-data:
           type: json
           url: https://api.github.com/repos/LuaJIT/LuaJIT/branches/v2.1
