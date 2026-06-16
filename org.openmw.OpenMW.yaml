@@ -38,8 +38,8 @@ modules:
       - ./b2 install
     sources:
       - type: archive
-        url: https://github.com/boostorg/boost/releases/download/boost-1.90.0/boost-1.90.0-b2-nodocs.tar.xz
-        sha256: 9e6bee9ab529fb2b0733049692d57d10a72202af085e553539a05b4204211a6f
+        url: https://github.com/boostorg/boost/releases/download/boost-1.91.0-1/boost-1.91.0-1-b2-nodocs.tar.xz
+        sha256: 7334bb672b9c7aa135da88bcc3111a64a198be9a7d44eb5151d9248e7cfd43ef
         x-checker-data:
           type: anitya
           project-id: 6845
@@ -124,8 +124,8 @@ modules:
       - -DGL_SILENCE_DEPRECATION=1
     sources:
       - type: archive
-        url: https://github.com/MyGUI/mygui/archive/refs/tags/MyGUI3.4.3.tar.gz
-        sha256: 33c91b531993047e77cace36d6fea73634b8c17bd0ed193d4cd12ac7c6328abd
+        url: https://github.com/MyGUI/mygui/archive/refs/tags/MyGUI3.4.4.tar.gz
+        sha256: 2b4b87c5c04cd9a33413d0ccebc1aa03b56c72873901633c85be2652ceb6785b
         x-checker-data:
           type: anitya
           project-id: 12280
@@ -182,8 +182,8 @@ modules:
     sources:
       # LuaJIT uses a rolling tag, so download based on the commit hash instead of the tag name
       - type: archive
-        url: https://github.com/LuaJIT/LuaJIT/archive/18b087cd2cd4ddc4a79782bf155383a689d5093d.tar.gz
-        sha256: 88a592afa9907d6b0c6e1e7ac9b39982622e3ca086f0646d4ea89b0e4e81f093
+        url: https://github.com/LuaJIT/LuaJIT/archive/8e6520a7aecd0517e792b359afbbfd7274791f5f.tar.gz
+        sha256: 9c4c370559352e0622231d5a1f28e95ff56e2dce6308238e6588b0943aac5e63
         x-checker-data:
           type: json
           url: https://api.github.com/repos/LuaJIT/LuaJIT/branches/v2.1
