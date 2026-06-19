@@ -1,7 +1,7 @@
 ---
 app-id: org.openmw.OpenMW
 runtime: org.kde.Platform
-runtime-version: '6.9'
+runtime-version: '6.10'
 sdk: org.kde.Sdk
 command: openmw-launcher
 rename-appdata-file: openmw.appdata.xml
@@ -48,6 +48,7 @@ modules:
   - name: collada-dom
     buildsystem: cmake-ninja
     config-opts:
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
       - -DOPT_COLLADA14=1
       - -DOPT_COLLADA15=0
     sources:
@@ -92,6 +93,7 @@ modules:
     # The cmake + ninja buildsystem doesn't install the required binaries correctly
     buildsystem: cmake
     config-opts:
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
       - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_BULLET2_DEMOS=0
       - -DBUILD_BULLET3=0
@@ -147,6 +149,7 @@ modules:
   - name: recastnavigation
     buildsystem: cmake-ninja
     config-opts:
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
       - -DCMAKE_BUILD_TYPE=Release
       - -DRECASTNAVIGATION_DEMO=no
       - -DRECASTNAVIGATION_TESTS=no
@@ -167,12 +170,12 @@ modules:
     buildsystem: cmake-ninja
     sources:
       - type: archive
-        url: https://github.com/jbeder/yaml-cpp/archive/0.8.0.tar.gz
-        sha256: fbe74bbdcee21d656715688706da3c8becfd946d92cd44705cc6098bb23b3a16
+        url: https://github.com/jbeder/yaml-cpp/archive/yaml-cpp-0.9.0.tar.gz
+        sha256: 25cb043240f828a8c51beb830569634bc7ac603978e0f69d6b63558dadefd49a
         x-checker-data:
           type: anitya
           project-id: 5284
-          url-template: https://github.com/jbeder/yaml-cpp/archive/$version.tar.gz
+          url-template: https://github.com/jbeder/yaml-cpp/archive/yaml-cpp-$version.tar.gz
 
   - name: luajit
     buildsystem: simple
@@ -202,8 +205,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/OpenMW/openmw.git
-        tag: openmw-0.50.0
-        commit: 47d78e004bc182def2904986f8bb54aea1f4b3ae
+        tag: openmw-0.51.0
+        commit: f4bec41444214a7903bebd178389ca22ca13f646
       - type: shell
         commands:
           - sed -i 's:>org.openmw.launcher.desktop<:>org.openmw.OpenMW.desktop<:'
