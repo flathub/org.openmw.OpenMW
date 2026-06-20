@@ -33,7 +33,7 @@ modules:
   - name: boost
     buildsystem: simple
     build-commands:
-      - ./bootstrap.sh --prefix=/app --with-libraries=filesystem,iostreams,program_options,system
+      - ./bootstrap.sh --prefix=/app --with-libraries=filesystem,iostreams,program_options
       - ./b2 headers
       - ./b2 install
     sources:
