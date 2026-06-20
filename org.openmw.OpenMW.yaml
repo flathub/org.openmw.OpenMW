@@ -40,6 +40,7 @@ modules:
   - name: collada-dom
     buildsystem: cmake-ninja
     config-opts:
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
       - -DOPT_COLLADA14=1
       - -DOPT_COLLADA15=0
       - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
@@ -85,6 +86,7 @@ modules:
     # The cmake + ninja buildsystem doesn't install the required binaries correctly
     buildsystem: cmake
     config-opts:
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
       - -DCMAKE_BUILD_TYPE=Release
       - -DBUILD_BULLET2_DEMOS=0
       - -DBUILD_BULLET3=0
@@ -118,8 +120,8 @@ modules:
       - -DGL_SILENCE_DEPRECATION=1
     sources:
       - type: archive
-        url: https://github.com/MyGUI/mygui/archive/refs/tags/MyGUI3.4.3.tar.gz
-        sha256: 33c91b531993047e77cace36d6fea73634b8c17bd0ed193d4cd12ac7c6328abd
+        url: https://github.com/MyGUI/mygui/archive/refs/tags/MyGUI3.4.4.tar.gz
+        sha256: 2b4b87c5c04cd9a33413d0ccebc1aa03b56c72873901633c85be2652ceb6785b
         x-checker-data:
           type: anitya
           project-id: 12280
@@ -141,6 +143,7 @@ modules:
   - name: recastnavigation
     buildsystem: cmake-ninja
     config-opts:
+      - -DCMAKE_POLICY_VERSION_MINIMUM=3.5
       - -DCMAKE_BUILD_TYPE=Release
       - -DRECASTNAVIGATION_DEMO=no
       - -DRECASTNAVIGATION_TESTS=no
@@ -173,7 +176,7 @@ modules:
           type: anitya
           project-id: 5284
           stable-only: true
-          url-template: https://github.com/jbeder/yaml-cpp/archive/yaml-cpp-${version}.tar.gz
+          url-template: https://github.com/jbeder/yaml-cpp/archive/yaml-cpp-$version.tar.gz
 
   - name: luajit
     buildsystem: simple
@@ -183,8 +186,8 @@ modules:
     sources:
       # LuaJIT uses a rolling tag, so download based on the commit hash instead of the tag name
       - type: archive
-        url: https://github.com/LuaJIT/LuaJIT/archive/b925b3e3fc6771171602323b45fbe9fb8fc90369.tar.gz
-        sha256: 64093b16de26069824941be6c2537e1d18b360c4b4d7117393e68d3ebeb3c51a
+        url: https://github.com/LuaJIT/LuaJIT/archive/8e6520a7aecd0517e792b359afbbfd7274791f5f.tar.gz
+        sha256: 9c4c370559352e0622231d5a1f28e95ff56e2dce6308238e6588b0943aac5e63
         x-checker-data:
           type: json
           url: https://api.github.com/repos/LuaJIT/LuaJIT/branches/v2.1
@@ -203,8 +206,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/OpenMW/openmw.git
-        tag: openmw-0.50.0
-        commit: 47d78e004bc182def2904986f8bb54aea1f4b3ae
+        tag: openmw-0.51.0
+        commit: f4bec41444214a7903bebd178389ca22ca13f646
       - type: shell
         commands:
           - sed -i 's:>org.openmw.launcher.desktop<:>org.openmw.OpenMW.desktop<:'
