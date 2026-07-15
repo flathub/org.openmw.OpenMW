@@ -81,8 +81,8 @@ modules:
         COLLADA_DIR: /app/include/collada-dom2.5
     sources:
       - type: archive
-        url: https://github.com/openmw/osg/archive/8aa8d91747ff414ab0de19aae1e0dbd739acea2c.tar.gz
-        sha256: e91a1510bd73cbe1af580b70945a36424bdcc9aa9002174cafa76e4f6f27fd4e
+        url: https://github.com/openmw/osg/archive/638f0a1e73687633fd99bf110d04226e78ff69c6.tar.gz
+        sha256: 90089e2a6835b0c581b2a30c282f4adf01883a14ff8dc9d6b535ef6b0002a0a7
         x-checker-data:
           type: json
           url: https://api.github.com/repos/openmw/osg/branches/3.6
