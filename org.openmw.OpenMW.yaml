@@ -185,8 +185,8 @@ modules:
     sources:
       # LuaJIT uses a rolling tag, so download based on the commit hash instead of the tag name
       - type: archive
-        url: https://github.com/LuaJIT/LuaJIT/archive/4886b676a698acc4bbdf54adfabb3e33a8c020e8.tar.gz
-        sha256: 10b05dcf4a8892e28956179a709b70608e4d2a26d2bf0f4515960bc2e8353fea
+        url: https://github.com/LuaJIT/LuaJIT/archive/28084004ee68d576f3f0c9ea61ea448fe3e10f07.tar.gz
+        sha256: e55869628e8fbadd4779854187ce979537df7bd7ed3c937a8f9f3e7077b33221
         x-checker-data:
           type: json
           url: https://api.github.com/repos/LuaJIT/LuaJIT/branches/v2.1
