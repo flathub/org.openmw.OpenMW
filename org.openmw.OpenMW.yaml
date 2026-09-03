@@ -1,3 +1,4 @@
+---
 app-id: org.openmw.OpenMW
 runtime: org.kde.Platform
 runtime-version: '6.11'
