@@ -81,8 +81,8 @@ modules:
         COLLADA_DIR: /app/include/collada-dom2.5
     sources:
       - type: archive
-        url: https://github.com/openmw/osg/archive/638f0a1e73687633fd99bf110d04226e78ff69c6.tar.gz
-        sha256: 90089e2a6835b0c581b2a30c282f4adf01883a14ff8dc9d6b535ef6b0002a0a7
+        url: https://github.com/openmw/osg/archive/9b384d5439977784e5cd250ff8ff7966928ddd27.tar.gz
+        sha256: f02f9ea734375daa35d77c15516772253e9c8a6d93154608c4099541e4460c20
         x-checker-data:
           type: json
           url: https://api.github.com/repos/openmw/osg/branches/3.6
@@ -185,8 +185,8 @@ modules:
     sources:
       # LuaJIT uses a rolling tag, so download based on the commit hash instead of the tag name
       - type: archive
-        url: https://github.com/LuaJIT/LuaJIT/archive/1ee778a4e37122d8ca7d5733c590a47dafd6b15c.tar.gz
-        sha256: 512cdb23dafa39c6247763ae15f29341734b1596067b067db0c0387bbebc7c55
+        url: https://github.com/LuaJIT/LuaJIT/archive/24c20c94e7db195b640854619577441f9b4bc6be.tar.gz
+        sha256: 178c656b62bb796e536a23f1d3bb09e1824e4dd28eaf2a4758b295ac328e32e6
         x-checker-data:
           type: json
           url: https://api.github.com/repos/LuaJIT/LuaJIT/branches/v2.1
