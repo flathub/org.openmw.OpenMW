@@ -38,12 +38,14 @@ modules:
       - ./b2 install
     sources:
       - type: archive
-        url: https://github.com/boostorg/boost/releases/download/boost-1.92.0/boost-1.92.0-b2-nodocs.tar.xz
+        url: 
+          https://github.com/boostorg/boost/releases/download/boost-1.92.0/boost-1.92.0-b2-nodocs.tar.xz
         sha256: ea7b982002cc9dfbe59b0b217b206f470dc75f3de0bb2973d844118934d82411
         x-checker-data:
           type: anitya
           project-id: 6845
-          url-template: https://github.com/boostorg/boost/releases/download/boost-$version/boost-$version-b2-nodocs.tar.xz
+          url-template: 
+            https://github.com/boostorg/boost/releases/download/boost-$version/boost-$version-b2-nodocs.tar.xz
 
   - name: collada-dom
     buildsystem: cmake-ninja
@@ -53,7 +55,8 @@ modules:
       - -DOPT_COLLADA15=0
     sources:
       - type: archive
-        url: https://github.com/rdiankov/collada-dom/archive/c1e20b7d6ff806237030fe82f126cb86d661f063.tar.gz
+        url: 
+          https://github.com/rdiankov/collada-dom/archive/c1e20b7d6ff806237030fe82f126cb86d661f063.tar.gz
         sha256: 8013dda9976fdf62e187ebbcd68e1a1d935f55da89ad8ad87b373e96491767d5
       - type: patch
         path: collada-dom-build.patch
@@ -81,7 +84,8 @@ modules:
         COLLADA_DIR: /app/include/collada-dom2.5
     sources:
       - type: archive
-        url: https://github.com/openmw/osg/archive/e568aace1e62de021df9955c62429cbe55516fd3.tar.gz
+        url: 
+          https://github.com/openmw/osg/archive/e568aace1e62de021df9955c62429cbe55516fd3.tar.gz
         sha256: 03f14ebb0a4ff34c41128aa2a2ecef90e0276b19c94811fb24eb110a59139ff3
         x-checker-data:
           type: json
@@ -185,8 +189,9 @@ modules:
     sources:
       # LuaJIT uses a rolling tag, so download based on the commit hash instead of the tag name
       - type: archive
-        url: https://github.com/LuaJIT/LuaJIT/archive/a4c064539ea931274d407e1249b4bb575424a0f4.tar.gz
-        sha256: 15625df3ebfbd1f76371005bffae39b84c65e718e57acc9a9c57863c7c101541
+        url: 
+          https://github.com/LuaJIT/LuaJIT/archive/8ca762976ebc85ad9bde3e15f147a7e326e0dd01.tar.gz
+        sha256: 3154fa4578724101cdaadb9356c7e2944a47920c68dae584be3d53d5cc6ba01e
         x-checker-data:
           type: json
           url: https://api.github.com/repos/LuaJIT/LuaJIT/branches/v2.1
