@@ -210,8 +210,8 @@ modules:
     sources:
       - type: git
         url: https://gitlab.com/OpenMW/openmw.git
-        tag: openmw-0.51.0
-        commit: f4bec41444214a7903bebd178389ca22ca13f646
+        tag: openmw-52-rc1
+        commit: 4ff261bf7c0d42a6cc06dd1ebc5d451802cff055
       - type: shell
         commands:
           - sed -i 's:>org.openmw.launcher.desktop<:>org.openmw.OpenMW.desktop<:'
