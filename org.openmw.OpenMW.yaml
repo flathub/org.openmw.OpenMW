@@ -135,7 +135,7 @@ modules:
         x-checker-data:
           type: anitya
           project-id: 12280
-          url-template: https://github.com/MyGUI/mygui/archive/refs/tags/MyGUI$version.tar.gz
+          url-template: https://github.com/MyGUI/mygui/archive/refs/tags/v$version.tar.gz
 
   - name: libunshield
     buildsystem: cmake-ninja
