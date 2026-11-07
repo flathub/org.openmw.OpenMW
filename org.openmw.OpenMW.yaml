@@ -114,16 +114,42 @@ modules:
           project-id: 7669
           url-template: https://github.com/bulletphysics/bullet3/archive/$version.tar.gz
 
+  - name: pugixml
+    buildsystem: cmake-ninja
+    sources:
+      - type: archive
+        url: https://github.com/zeux/pugixml/archive/refs/tags/v1.16.tar.gz
+        sha256: 357bcab8877dc9943f355d3a72daba1b053238ba955f50fa81586afb65090219
+        x-checker-data:
+          type: anitya
+          project-id: 3728
+          url-template: https://github.com/zeux/pugixml/archive/refs/tags/v$version.tar.gz
+
+  - name: utf8cpp
+    buildsystem: cmake-ninja
+    sources:
+      - type: archive
+        url: https://github.com/nemtrif/utfcpp/archive/refs/tags/v4.2.1.tar.gz
+        sha256: 6d6a5493a111884cc085ee31babfe6d9960c8fb08fc80a64852eaeea8323dbc1
+        x-checker-data:
+          type: anitya
+          project-id: 20545
+          url-template: https://github.com/nemtrif/utfcpp/archive/refs/tags/v$version.tar.gz
+
   - name: mygui
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
       - -DMYGUI_RENDERSYSTEM=1
       - -DMYGUI_BUILD_DEMOS=0
+      - -DMYGUI_BUILD_ADVANCED_DEMOS=0
       - -DMYGUI_BUILD_TOOLS=0
-      - -DMYGUI_BUILD_PLUGINS=0
+      - -DMYGUI_BUILD_DOCS=0
+      - -DMYGUI_BUILD_UNITTESTS=0
+      - -DMYGUI_BUILD_PLATFORM_TESTS=0
       - -DMYGUI_DONT_USE_OBSOLETE=1
-      - -DGL_SILENCE_DEPRECATION=1
+      - -DMYGUI_USE_SYSTEM_PUGIXML=1
+      - -DMYGUI_USE_SYSTEM_UTF8CPP=1
     sources:
       - type: archive
         url: https://github.com/MyGUI/mygui/archive/refs/tags/v3.5.4.tar.gz
