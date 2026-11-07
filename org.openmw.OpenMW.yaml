@@ -38,14 +38,12 @@ modules:
       - ./b2 install
     sources:
       - type: archive
-        url: 
-          https://github.com/boostorg/boost/releases/download/boost-1.92.0/boost-1.92.0-b2-nodocs.tar.xz
+        url: https://github.com/boostorg/boost/releases/download/boost-1.92.0/boost-1.92.0-b2-nodocs.tar.xz
         sha256: ea7b982002cc9dfbe59b0b217b206f470dc75f3de0bb2973d844118934d82411
         x-checker-data:
           type: anitya
           project-id: 6845
-          url-template: 
-            https://github.com/boostorg/boost/releases/download/boost-$version/boost-$version-b2-nodocs.tar.xz
+          url-template: https://github.com/boostorg/boost/releases/download/boost-$version/boost-$version-b2-nodocs.tar.xz
 
   - name: collada-dom
     buildsystem: cmake-ninja
@@ -55,8 +53,7 @@ modules:
       - -DOPT_COLLADA15=0
     sources:
       - type: archive
-        url: 
-          https://github.com/rdiankov/collada-dom/archive/c1e20b7d6ff806237030fe82f126cb86d661f063.tar.gz
+        url: https://github.com/rdiankov/collada-dom/archive/c1e20b7d6ff806237030fe82f126cb86d661f063.tar.gz
         sha256: 8013dda9976fdf62e187ebbcd68e1a1d935f55da89ad8ad87b373e96491767d5
       - type: patch
         path: collada-dom-build.patch
@@ -84,8 +81,7 @@ modules:
         COLLADA_DIR: /app/include/collada-dom2.5
     sources:
       - type: archive
-        url: 
-          https://github.com/openmw/osg/archive/e568aace1e62de021df9955c62429cbe55516fd3.tar.gz
+        url: https://github.com/openmw/osg/archive/e568aace1e62de021df9955c62429cbe55516fd3.tar.gz
         sha256: 03f14ebb0a4ff34c41128aa2a2ecef90e0276b19c94811fb24eb110a59139ff3
         x-checker-data:
           type: json
@@ -118,20 +114,46 @@ modules:
           project-id: 7669
           url-template: https://github.com/bulletphysics/bullet3/archive/$version.tar.gz
 
+  - name: pugixml
+    buildsystem: cmake-ninja
+    sources:
+      - type: archive
+        url: https://github.com/zeux/pugixml/archive/refs/tags/v1.16.tar.gz
+        sha256: 357bcab8877dc9943f355d3a72daba1b053238ba955f50fa81586afb65090219
+        x-checker-data:
+          type: anitya
+          project-id: 3728
+          url-template: https://github.com/zeux/pugixml/archive/refs/tags/v$version.tar.gz
+
+  - name: utf8cpp
+    buildsystem: cmake-ninja
+    sources:
+      - type: archive
+        url: https://github.com/nemtrif/utfcpp/archive/refs/tags/v4.2.1.tar.gz
+        sha256: 6d6a5493a111884cc085ee31babfe6d9960c8fb08fc80a64852eaeea8323dbc1
+        x-checker-data:
+          type: anitya
+          project-id: 20545
+          url-template: https://github.com/nemtrif/utfcpp/archive/refs/tags/v$version.tar.gz
+
   - name: mygui
     buildsystem: cmake-ninja
     config-opts:
       - -DCMAKE_BUILD_TYPE=Release
       - -DMYGUI_RENDERSYSTEM=1
       - -DMYGUI_BUILD_DEMOS=0
+      - -DMYGUI_BUILD_ADVANCED_DEMOS=0
       - -DMYGUI_BUILD_TOOLS=0
-      - -DMYGUI_BUILD_PLUGINS=0
+      - -DMYGUI_BUILD_DOCS=0
+      - -DMYGUI_BUILD_UNITTESTS=0
+      - -DMYGUI_BUILD_PLATFORM_TESTS=0
       - -DMYGUI_DONT_USE_OBSOLETE=1
-      - -DGL_SILENCE_DEPRECATION=1
+      - -DMYGUI_USE_SYSTEM_PUGIXML=1
+      - -DMYGUI_USE_SYSTEM_UTF8CPP=1
     sources:
       - type: archive
-        url: https://github.com/MyGUI/mygui/archive/refs/tags/MyGUI3.4.4.tar.gz
-        sha256: 2b4b87c5c04cd9a33413d0ccebc1aa03b56c72873901633c85be2652ceb6785b
+        url: https://github.com/MyGUI/mygui/archive/refs/tags/v3.5.4.tar.gz
+        sha256: 5d6baa671a922b472b637b2b6bfcff0278df850f97e714c89720ac634d112f5f
         x-checker-data:
           type: anitya
           project-id: 12280
@@ -189,8 +211,7 @@ modules:
     sources:
       # LuaJIT uses a rolling tag, so download based on the commit hash instead of the tag name
       - type: archive
-        url: 
-          https://github.com/LuaJIT/LuaJIT/archive/ea9eb7edb5eac4a9d175d74523db34fac0fa5180.tar.gz
+        url: https://github.com/LuaJIT/LuaJIT/archive/ea9eb7edb5eac4a9d175d74523db34fac0fa5180.tar.gz
         sha256: 338a5640be00b89fd0a2a027a7433fcbbb4d006be840d216d84151386b5bcdf7
         x-checker-data:
           type: json
