@@ -130,8 +130,8 @@ modules:
       - -DGL_SILENCE_DEPRECATION=1
     sources:
       - type: archive
-        url: https://github.com/MyGUI/mygui/archive/refs/tags/MyGUI3.4.4.tar.gz
-        sha256: 2b4b87c5c04cd9a33413d0ccebc1aa03b56c72873901633c85be2652ceb6785b
+        url: https://github.com/MyGUI/mygui/archive/refs/tags/v3.5.4.tar.gz
+        sha256: 5d6baa671a922b472b637b2b6bfcff0278df850f97e714c89720ac634d112f5f
         x-checker-data:
           type: anitya
           project-id: 12280
