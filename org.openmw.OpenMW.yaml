@@ -85,8 +85,8 @@ modules:
     sources:
       - type: archive
         url: 
-          https://github.com/openmw/osg/archive/e568aace1e62de021df9955c62429cbe55516fd3.tar.gz
-        sha256: 03f14ebb0a4ff34c41128aa2a2ecef90e0276b19c94811fb24eb110a59139ff3
+          https://github.com/openmw/osg/archive/d828aad61bf496925f2c2810057edfbc0d74b277.tar.gz
+        sha256: ef69d8826ccf592e77336773b8d1b305687653d9d59f43422e4ef57c028d9cc7
         x-checker-data:
           type: json
           url: https://api.github.com/repos/openmw/osg/branches/3.6
@@ -130,8 +130,8 @@ modules:
       - -DGL_SILENCE_DEPRECATION=1
     sources:
       - type: archive
-        url: https://github.com/MyGUI/mygui/archive/refs/tags/MyGUI3.4.4.tar.gz
-        sha256: 2b4b87c5c04cd9a33413d0ccebc1aa03b56c72873901633c85be2652ceb6785b
+        url: https://github.com/MyGUI/mygui/archive/refs/tags/v3.5.4.tar.gz
+        sha256: 5d6baa671a922b472b637b2b6bfcff0278df850f97e714c89720ac634d112f5f
         x-checker-data:
           type: anitya
           project-id: 12280
@@ -190,8 +190,8 @@ modules:
       # LuaJIT uses a rolling tag, so download based on the commit hash instead of the tag name
       - type: archive
         url: 
-          https://github.com/LuaJIT/LuaJIT/archive/ea9eb7edb5eac4a9d175d74523db34fac0fa5180.tar.gz
-        sha256: 338a5640be00b89fd0a2a027a7433fcbbb4d006be840d216d84151386b5bcdf7
+          https://github.com/LuaJIT/LuaJIT/archive/96f7b297326e9fd454b7186c6858b2773f94a0dc.tar.gz
+        sha256: ce9d03b33e4c28492e8dacacf69c6975a0502cf9225957a6b42dc28f92cbbd34
         x-checker-data:
           type: json
           url: https://api.github.com/repos/LuaJIT/LuaJIT/branches/v2.1
