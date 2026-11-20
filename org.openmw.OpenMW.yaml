@@ -132,10 +132,11 @@ modules:
       - type: archive
         url: https://github.com/MyGUI/mygui/archive/refs/tags/MyGUI3.4.4.tar.gz
         sha256: 2b4b87c5c04cd9a33413d0ccebc1aa03b56c72873901633c85be2652ceb6785b
-        x-checker-data:
-          type: anitya
-          project-id: 12280
-          url-template: https://github.com/MyGUI/mygui/archive/refs/tags/v$version.tar.gz
+        # Needs new OpenMW release to be able to upgrade further
+        # x-checker-data:
+        #   type: anitya
+        #   project-id: 12280
+        #   url-template: https://github.com/MyGUI/mygui/archive/refs/tags/v$version.tar.gz
 
   - name: libunshield
     buildsystem: cmake-ninja
